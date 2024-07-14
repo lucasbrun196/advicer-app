@@ -1,0 +1,1 @@
+ /Users/lucasbrun/projects/advicer-app/.dart_tool/flutter_build/4fb67babaea17417c23561f9717fafcf/native_assets.yaml: 
