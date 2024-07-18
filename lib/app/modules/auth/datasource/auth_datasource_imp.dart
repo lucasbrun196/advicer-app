@@ -12,7 +12,6 @@ class AuthDatasourceImp extends AuthRemoteDatasource {
       final UserCredential userCredential =
           await firebaseAuth.signInWithEmailAndPassword(
               email: userInfos.email, password: userInfos.password);
-      print(userCredential.user!.uid);
       return userCredential.user!.uid;
     } catch (e) {
       return '';
