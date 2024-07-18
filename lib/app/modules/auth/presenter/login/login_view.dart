@@ -1,7 +1,11 @@
+import 'package:advicer_app/app/modules/auth/domain/entities/user_info.dart';
+import 'package:advicer_app/app/modules/auth/presenter/login/controller/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+  final LoginController controller;
+  const LoginView({super.key, required this.controller});
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -10,6 +14,14 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final _textEditingControllerEmail = TextEditingController();
   final _textEditingControllerPassword = TextEditingController();
+  final UserInfos userInfo = UserInfos(email: '', password: '');
+  bool _passWordIsVisible = false;
+
+  void _hidePassword(bool passWordStatus) {
+    setState(() {
+      _passWordIsVisible = passWordStatus;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,19 +50,41 @@ class _LoginViewState extends State<LoginView> {
                               hintText: 'Email',
                               icon: Icon(Icons.email),
                             ),
+                            keyboardType: TextInputType.emailAddress,
                             controller: _textEditingControllerEmail,
                             autocorrect: false,
                           ),
                           const SizedBox(
                             height: 40,
                           ),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              hintText: 'Password',
-                              icon: Icon(Icons.password_rounded),
-                            ),
-                            controller: _textEditingControllerPassword,
-                            autocorrect: false,
+                          Row(
+                            children: [
+                              Expanded(
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
+                                    hintText: 'Password',
+                                    icon: Icon(Icons.password_rounded),
+                                  ),
+                                  obscureText: !_passWordIsVisible,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  controller: _textEditingControllerPassword,
+                                  autocorrect: false,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  if (_passWordIsVisible == true) {
+                                    _hidePassword(false);
+                                  } else {
+                                    _hidePassword(true);
+                                  }
+                                },
+                                icon: SvgPicture.asset(
+                                    _passWordIsVisible == true
+                                        ? 'assets/show_password.svg'
+                                        : 'assets/hide_password.svg'),
+                              ),
+                            ],
                           ),
                           const SizedBox(
                             height: 60,
@@ -63,7 +97,12 @@ class _LoginViewState extends State<LoginView> {
                       width: 220,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(elevation: 5),
-                        onPressed: () {},
+                        onPressed: () {
+                          userInfo.email = _textEditingControllerEmail.text;
+                          userInfo.password =
+                              _textEditingControllerPassword.text;
+                          widget.controller.login(userInfo);
+                        },
                         child: const Text('Login'),
                       ),
                     ),
