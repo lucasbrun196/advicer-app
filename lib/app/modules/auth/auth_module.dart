@@ -3,6 +3,7 @@ import 'package:advicer_app/app/modules/auth/data/repositories/auth_repository_i
 import 'package:advicer_app/app/modules/auth/datasource/auth_datasource_imp.dart';
 import 'package:advicer_app/app/modules/auth/domain/repositories/auth_repository.dart';
 import 'package:advicer_app/app/modules/auth/domain/services/auth_service.dart';
+import 'package:advicer_app/app/modules/auth/presenter/create_account/create_account_view.dart';
 import 'package:advicer_app/app/modules/auth/presenter/login/controller/login_controller.dart';
 import 'package:advicer_app/app/modules/auth/presenter/login/login_view.dart';
 import 'package:advicer_app/app/modules/auth/presenter/splash/splash_view.dart';
@@ -28,5 +29,6 @@ class AuthModule extends Module {
               controller: Modular.get(),
             ));
     r.child('/login', child: (context) => const SplashView());
+    r.child('/createaccount', child: (context) => const CreateAccountView());
   }
 }

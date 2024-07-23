@@ -3,6 +3,7 @@ import 'package:advicer_app/app/modules/auth/presenter/login/controller/login_co
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
 
 class LoginView extends StatefulWidget {
@@ -129,7 +130,9 @@ class _LoginViewState extends State<LoginView> {
                         height: 50,
                         width: 220,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Modular.to.pushNamed('/createaccount');
+                          },
                           child: const Text('Create account'),
                         ),
                       ),
