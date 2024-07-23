@@ -16,6 +16,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
@@ -29,15 +30,56 @@ class _CreateAccountViewState extends State<CreateAccountView> {
         title: const Text('Create your account'),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 28),
-        // color: const Color.fromARGB(43, 0, 0, 0),
+        margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 75),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
-              height: 40,
+            Form(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(hintText: 'First name'),
+                    controller: _textEditingControllerFirstName,
+                    keyboardType: TextInputType.text,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(hintText: 'Last name'),
+                    controller: _textEditingControllerLastName,
+                    keyboardType: TextInputType.text,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(hintText: 'Email'),
+                    controller: _textEditingControllerEmail,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(hintText: 'Password'),
+                    controller: _textEditingControllerPassword,
+                    keyboardType: TextInputType.text,
+                  ),
+                ],
+              ),
             ),
-            TextFormField(
-              decoration: InputDecoration(hintText: 'First name'),
+            SizedBox(
+              height: 50,
+              width: screenSize.width,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(elevation: 5),
+                onPressed: () {},
+                child: const Text('Create account'),
+              ),
             ),
           ],
         ),
