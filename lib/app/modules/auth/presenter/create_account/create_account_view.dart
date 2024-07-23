@@ -1,3 +1,4 @@
+import 'package:advicer_app/app/modules/auth/domain/entities/new_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -13,6 +14,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
   final _textEditingControllerLastName = TextEditingController();
   final _textEditingControllerEmail = TextEditingController();
   final _textEditingControllerPassword = TextEditingController();
+  final newUser = NewUser(firstName: '', lastName: '', email: '', password: '');
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,12 @@ class _CreateAccountViewState extends State<CreateAccountView> {
               width: screenSize.width,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(elevation: 5),
-                onPressed: () {},
+                onPressed: () {
+                  newUser.firstName = _textEditingControllerFirstName.text;
+                  newUser.lastName = _textEditingControllerLastName.text;
+                  newUser.email = _textEditingControllerEmail.text;
+                  newUser.password = _textEditingControllerPassword.text;
+                },
                 child: const Text('Create account'),
               ),
             ),
