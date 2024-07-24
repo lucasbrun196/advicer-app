@@ -29,7 +29,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
           previous.createAccountStatus != current.createAccountStatus,
       listener: (context, state) {
         if (state.createAccountStatus == CreateAccountStatus.error) {
-          return AsukaSnackbar.alert('Error when create account').show();
+          return AsukaSnackbar.alert('Error when creating account').show();
         }
       },
       child: Scaffold(
@@ -110,7 +110,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                             if (value == null || value.isEmpty) {
                               return 'this field is required';
                             }
-                            if (value.length < 8) {
+                            if (value.length < 6) {
                               return 'your password must have more than 5 characters';
                             }
                             return null;
@@ -149,6 +149,10 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                           newUser.password =
                               _textEditingControllerPassword.text;
                           widget.controller.createAccount(newUser);
+                          _textEditingControllerFirstName.text = '';
+                          _textEditingControllerLastName.text = '';
+                          _textEditingControllerEmail.text = '';
+                          _textEditingControllerPassword.text = '';
                         }
                       },
                       child: const Text('Create account'),
