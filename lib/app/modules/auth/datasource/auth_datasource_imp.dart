@@ -17,4 +17,15 @@ class AuthDatasourceImp extends AuthRemoteDatasource {
       return '';
     }
   }
+
+  @override
+  Future<String> createUserOnAuth(String email, String password) async {
+    try {
+      final newUser = await firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      return newUser.user!.uid;
+    } catch (e) {
+      return '';
+    }
+  }
 }
