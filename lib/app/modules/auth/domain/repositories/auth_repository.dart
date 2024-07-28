@@ -7,4 +7,6 @@ abstract class AuthRepository {
   Future<String> createUserOnAuth(NewUser newuser);
 
   Future<void> createUserOnDb(NewUser newuser, String uid);
+
+  Future<String> isUserIsLogged();
 }

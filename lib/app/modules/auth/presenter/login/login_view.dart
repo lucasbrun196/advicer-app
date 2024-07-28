@@ -49,7 +49,7 @@ class _LoginViewState extends State<LoginView> {
               children: [
                 Image.asset(
                   alignment: Alignment.topCenter,
-                  'assets/dialog_ballon.jpeg',
+                  'assets/dialog_ballon.png',
                   height: 220,
                 ),
                 SizedBox(

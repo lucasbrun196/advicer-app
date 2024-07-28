@@ -28,4 +28,9 @@ class AuthDatasourceImp extends AuthRemoteDatasource {
       return '';
     }
   }
+
+  @override
+  Future<String> getLastUserUid() async {
+    return firebaseAuth.currentUser?.uid ?? '';
+  }
 }

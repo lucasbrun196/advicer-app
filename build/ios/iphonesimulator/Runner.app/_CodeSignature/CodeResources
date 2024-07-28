@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		Kw4YIU3gRyVDHVS06rI3EyVrckk=
+		o4WI6ppPF63U6qC/doK4F2dboFc=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		PRSCE+ouV1yu4h8Amjp7enRBAxQ=
+		ZSOQ7/7DUReHxhWTfcrNnXWRJRU=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		+E3cK9SbqhsKM9ZBlF1z8AQtopE=
+		1mibU30U/aiQRLFJHbTJozLrsvg=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		mH8xC+Dt0SknPI5j/whCCuJCCcA=
+		Ao0bQwmy60fMsQzBsD98n/aOD0Q=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -72,9 +72,9 @@
 		<data>
 		9r2rLm2sWwAEnYTiOUpU5atfRQ0=
 		</data>
-		<key>Frameworks/App.framework/flutter_assets/assets/dialog_ballon.jpeg</key>
+		<key>Frameworks/App.framework/flutter_assets/assets/dialog_ballon.png</key>
 		<data>
-		pym5YGXfeScLcMY1EvyWQaRkTOU=
+		xn/f7wnXzLL5QkFMcU3Z3BfnPPo=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/hide_password.svg</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		wiDMqUIohT+R6emt7RwFGv/xFjQ=
+		cj5f0rx9591eY72mVr2XwQnjub0=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -629,7 +629,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lvlOFgCWlYWDHAq0V/L5ag2f0sr3/EvVUmAjVtz7W4Q=
+			6u/PlE72OedHU1upfpWHyjjSaRgwJbeooTE9M9xrDPk=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -643,21 +643,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JkXfKGq9HeEgE2vSxIS4rJntTNJL4qrQrK83d2JStzw=
+			kPhHJ1YK9nylBdAchjR7ewEpnKcFcFF+3hnal+PimWI=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Q4fVTq6yqtr0jse16mqjdV2I5/P9u0yRxBAEzJzPLQk=
+			T5dB2CY/k8kHTJRgZtw3bOp3i42ZsbF/E4fDWiR80Ps=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EkVzFbPXS8crDWlbLaaWjTyWdp+x+1tOMVXRawz5Nqg=
+			kyK1zNR5YPJ+2M1aKH/LQGrmrZdmUvVOmagWxIiurv8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -674,11 +674,11 @@
 			z0EMPZb1MJTc28gPgZcbHLvqORy+7ylfN7qeMFMRQV8=
 			</data>
 		</dict>
-		<key>Frameworks/App.framework/flutter_assets/assets/dialog_ballon.jpeg</key>
+		<key>Frameworks/App.framework/flutter_assets/assets/dialog_ballon.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pWrZx47J/4pGlieZjA2kLGlq8HchBexS10oOlu8PJik=
+			jPlRYV5CgEoTYCP4KUstGvO7iW9CUvgbqAY5MlASc8k=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/hide_password.svg</key>
@@ -713,7 +713,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ze3ZQ+FkUV257Ktjf6p1JmhSkM9Tl5QL+yMUFnOzuIM=
+			LDI/xsqlLjCtT4Ux/waVWdNCVWwdcl6lYvQHH2Tap2c=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

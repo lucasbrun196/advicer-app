@@ -30,4 +30,14 @@ class AuthServiceImp extends AuthService {
       return false;
     }
   }
+
+  @override
+  Future<bool> isUserIsLogged() async {
+    String userUid = await authRepository.isUserIsLogged();
+    if (userUid != '' || userUid.trim().isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

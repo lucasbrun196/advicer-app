@@ -26,4 +26,9 @@ class AuthRepositoryImp extends AuthRepository {
     final newUserToMap = NewUserDto.toMap(newuser);
     return authFirestoreRemote.createUserOnDb(newUserToMap, uid);
   }
+
+  @override
+  Future<String> isUserIsLogged() async {
+    return authRemoteDatasource.getLastUserUid();
+  }
 }

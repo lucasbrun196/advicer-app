@@ -4,4 +4,6 @@ abstract class AuthRemoteDatasource {
   Future<String> login(UserInfos userInfos);
 
   Future<String> createUserOnAuth(String email, String password);
+
+  Future<String> getLastUserUid();
 }
