@@ -113,6 +113,7 @@ class _LoginViewState extends State<LoginView> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(elevation: 5),
                           onPressed: () {
+                            setState(() => _passWordIsVisible = false);
                             userInfo.email = _textEditingControllerEmail.text;
                             userInfo.password =
                                 _textEditingControllerPassword.text;
@@ -124,20 +125,37 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                       const SizedBox(
-                        height: 15,
+                        height: 20,
                       ),
                       SizedBox(
                         height: 50,
                         width: 220,
-                        child: TextButton(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(elevation: 5),
                           onPressed: () {
                             Modular.to.pushNamed('/createaccount');
                           },
                           child: const Text('Create account'),
                         ),
                       ),
+                      const SizedBox(
+                        height: 35,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Modular.to.pushNamed('/forgotpassword');
+                        },
+                        child: const Text(
+                          'Forgot password',
+                          style:
+                              TextStyle(decoration: TextDecoration.underline),
+                        ),
+                      )
                     ],
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 BlocBuilder<LoginController, LoginState>(
                   bloc: widget.controller,

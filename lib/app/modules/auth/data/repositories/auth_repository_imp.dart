@@ -31,4 +31,9 @@ class AuthRepositoryImp extends AuthRepository {
   Future<String> isUserIsLogged() async {
     return authRemoteDatasource.getLastUserUid();
   }
+
+  @override
+  Future<bool> sendEmailToResetPassword(String email) async {
+    return await authRemoteDatasource.sendEmailToResetPassword(email);
+  }
 }

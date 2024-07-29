@@ -9,4 +9,6 @@ abstract class AuthRepository {
   Future<void> createUserOnDb(NewUser newuser, String uid);
 
   Future<String> isUserIsLogged();
+
+  Future<bool> sendEmailToResetPassword(String email);
 }

@@ -40,4 +40,9 @@ class AuthServiceImp extends AuthService {
       return false;
     }
   }
+
+  @override
+  Future<bool> sendEmailToResetPassword(String email) async {
+    return await authRepository.sendEmailToResetPassword(email);
+  }
 }

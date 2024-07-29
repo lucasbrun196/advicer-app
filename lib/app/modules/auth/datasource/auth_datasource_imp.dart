@@ -33,4 +33,14 @@ class AuthDatasourceImp extends AuthRemoteDatasource {
   Future<String> getLastUserUid() async {
     return firebaseAuth.currentUser?.uid ?? '';
   }
+
+  @override
+  Future<bool> sendEmailToResetPassword(String email) async {
+    try {
+      await firebaseAuth.sendPasswordResetEmail(email: email);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }

@@ -19,20 +19,17 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: const Color.fromRGBO(108, 91, 164, 1),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  color: const Color.fromARGB(150, 0, 0, 0),
-                  'assets/dialog_ballon.png',
-                ),
-              ],
-            ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                color: const Color.fromARGB(150, 0, 0, 0),
+                'assets/dialog_ballon.png',
+              ),
+            ],
           ),
         ),
       ),

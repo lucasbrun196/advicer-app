@@ -30,6 +30,9 @@ class _CreateAccountViewState extends State<CreateAccountView> {
       listener: (context, state) {
         if (state.createAccountStatus == CreateAccountStatus.error) {
           return AsukaSnackbar.alert('Error when creating account').show();
+        } else if (state.createAccountStatus == CreateAccountStatus.success) {
+          return AsukaSnackbar.success('Your account was created with success')
+              .show();
         }
       },
       child: Scaffold(

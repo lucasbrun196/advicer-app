@@ -12,7 +12,8 @@ class SplashController extends Cubit<SplashState> {
   void userIsAvaliable() async {
     bool uidIsAvaliable = await authService.isUserIsLogged();
     if (uidIsAvaliable) {
-      Modular.to.navigate('/home/homepage');
+      //Modular.to.navigate('/home/homepage');
+      Modular.to.navigate('/login');
     } else {
       Modular.to.navigate('/login');
     }

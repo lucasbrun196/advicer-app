@@ -7,6 +7,8 @@ import 'package:advicer_app/app/modules/auth/domain/repositories/auth_repository
 import 'package:advicer_app/app/modules/auth/domain/services/auth_service.dart';
 import 'package:advicer_app/app/modules/auth/presenter/create_account/controller/create_account_controller.dart';
 import 'package:advicer_app/app/modules/auth/presenter/create_account/create_account_view.dart';
+import 'package:advicer_app/app/modules/auth/presenter/forgot_password/controller/forgot_password_controller.dart';
+import 'package:advicer_app/app/modules/auth/presenter/forgot_password/forgot_password_view.dart';
 import 'package:advicer_app/app/modules/auth/presenter/login/controller/login_controller.dart';
 import 'package:advicer_app/app/modules/auth/presenter/login/login_view.dart';
 import 'package:advicer_app/app/modules/auth/presenter/splash/controller/splash_controller.dart';
@@ -29,6 +31,7 @@ class AuthModule extends Module {
     i.addInstance(FirebaseFirestore.instance);
     i.addLazySingleton<AuthFirestoreRemote>(FirestoreDatasourceImp.new);
     i.addLazySingleton(SplashController.new);
+    i.addLazySingleton(ForgotPasswordController.new);
   }
 
   @override
@@ -49,6 +52,12 @@ class AuthModule extends Module {
     r.child(
       '/createaccount',
       child: (context) => CreateAccountView(
+        controller: Modular.get(),
+      ),
+    );
+    r.child(
+      '/forgotpassword',
+      child: (context) => ForgotPasswordView(
         controller: Modular.get(),
       ),
     );
