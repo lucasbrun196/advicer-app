@@ -33,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
                   children: const [
                     DrawerHeader(
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(108, 91, 164, 1),
+                        color: Color.fromRGBO(108, 91, 164, 0.354),
                       ),
                       child: Text(
                         'Advicer',
@@ -56,7 +56,10 @@ class _HomeViewState extends State<HomeView> {
                               ],
                             ),
                           ),
-                          Divider(color: Color.fromRGBO(108, 91, 164, 1)),
+                          Divider(
+                            color: Color.fromRGBO(108, 91, 164, 0.354),
+                            thickness: 0.5,
+                          ),
                         ],
                       ),
                     ),
