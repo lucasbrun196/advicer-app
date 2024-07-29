@@ -3,8 +3,8 @@ import 'package:advicer_app/app/modules/home/data/repositories/home_repository_i
 import 'package:advicer_app/app/modules/home/domain/repositories/home_repository.dart';
 import 'package:advicer_app/app/modules/home/domain/services/home_service.dart';
 import 'package:advicer_app/app/modules/home/domain/services/home_service_imp.dart';
-import 'package:advicer_app/app/modules/home/presenter/controller/home_controller.dart';
-import 'package:advicer_app/app/modules/home/presenter/home_view.dart';
+import 'package:advicer_app/app/modules/home/presenter/homepage/controller/home_controller.dart';
+import 'package:advicer_app/app/modules/home/presenter/homepage/home_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -20,7 +20,6 @@ class HomeModule extends Module {
     i.addLazySingleton<HomeService>(HomeServiceImp.new);
     i.addLazySingleton<HomeRepository>(HomeRepositoryImp.new);
     i.addLazySingleton<HomeDatabaseDatasource>(HomeFirestoreDatasourceImp.new);
-
   }
 
   @override
