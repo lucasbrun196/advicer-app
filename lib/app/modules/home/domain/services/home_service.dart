@@ -4,4 +4,6 @@ abstract class HomeService {
   Future<UserData> getUserData(String userUid);
 
   Future<String> getCurrentUserUid();
+
+  Future<void> logout();
 }

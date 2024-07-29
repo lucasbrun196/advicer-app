@@ -2,14 +2,12 @@ import 'package:advicer_app/app/modules/home/data/datasource/home_database_datas
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class HomeFirestoreDatasourceImp implements HomeDatabaseDatasource{
+class HomeFirestoreDatasourceImp implements HomeDatabaseDatasource {
   final FirebaseFirestore firebaseFirestore;
   final FirebaseAuth firebaseAuth;
 
-  HomeFirestoreDatasourceImp({
-     required this.firebaseFirestore,
-     required this.firebaseAuth
-  });
+  HomeFirestoreDatasourceImp(
+      {required this.firebaseFirestore, required this.firebaseAuth});
 
   @override
   Future<Map<String, dynamic>> getUserData(String userUid) async {
@@ -30,5 +28,13 @@ class HomeFirestoreDatasourceImp implements HomeDatabaseDatasource{
   Future<String> getCurrentUserUid() async {
     return firebaseAuth.currentUser!.uid;
   }
-  
+
+  @override
+  Future<void> logout() async {
+    try {
+      await firebaseAuth.signOut();
+    } catch (e) {
+      throw Exception();
+    }
+  }
 }
