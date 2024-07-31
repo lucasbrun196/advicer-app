@@ -30,8 +30,8 @@ class _HomeViewState extends State<HomeView> {
               ),
               drawer: Drawer(
                 child: ListView(
-                  children: const [
-                    DrawerHeader(
+                  children: [
+                    const DrawerHeader(
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(108, 91, 164, 0.354),
                       ),
@@ -44,19 +44,25 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 12, right: 12),
+                      padding: const EdgeInsets.only(left: 12, right: 12),
                       child: Column(
                         children: [
-                          ListTile(
-                            title: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Logout'),
-                                Icon(Icons.logout),
-                              ],
+                          InkWell(
+                            onTap: () async {
+                              await modal(context);
+                            },
+                            child: const ListTile(
+                              title: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Logout'),
+                                  Icon(Icons.logout),
+                                ],
+                              ),
                             ),
                           ),
-                          Divider(
+                          const Divider(
                             color: Color.fromRGBO(108, 91, 164, 0.354),
                             thickness: 0.5,
                           ),
@@ -73,5 +79,80 @@ class _HomeViewState extends State<HomeView> {
         }
       },
     );
+  }
+
+  Future<bool?> modal(BuildContext context) async {
+    return await showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        child: SizedBox(
+          height: 150,
+          width: 60,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(
+                height: 5,
+              ),
+              const Text(
+                'Are you sure you want to leave?',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+              const Icon(
+                Icons.logout,
+                color: Color.fromRGBO(99, 81, 159, 1),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    top: BorderSide(
+                      width: 0.2,
+                      color: Color.fromRGBO(99, 81, 159, 1),
+                    ),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          right: BorderSide(
+                            width: 0.2,
+                            color: Color.fromRGBO(99, 81, 159, 1),
+                          ),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 34),
+                        child: TextButton(
+                          onPressed: () async {
+                            Navigator.of(context).pop();
+                            widget.controller.logout();
+                          },
+                          child: const Text('Yes'),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 34),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('No'),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    ).then((value) {
+      Navigator.of(context).pop();
+      return null;
+    });
   }
 }

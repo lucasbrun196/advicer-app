@@ -1,6 +1,5 @@
 import 'package:advicer_app/app/modules/home/domain/services/home_service.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
