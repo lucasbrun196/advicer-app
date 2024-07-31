@@ -189,7 +189,7 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/lucasbrun/.pub-cache/hosted/pub.dev/http-1.2.1",
+      "rootUri": "file:///Users/lucasbrun/.pub-cache/hosted/pub.dev/http-1.2.2",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -398,7 +398,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-07-25T03:14:53.056447Z",
+  "generated": "2024-07-31T05:17:14.560369Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///Users/lucasbrun/development/flutter",

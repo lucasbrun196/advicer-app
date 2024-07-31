@@ -138,6 +138,7 @@ class _HomeViewState extends State<HomeView> {
                       padding: const EdgeInsets.only(left: 34),
                       child: TextButton(
                         onPressed: () {
+                          widget.controller.teste();
                           Navigator.of(context).pop();
                         },
                         child: const Text('No'),

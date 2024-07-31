@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:advicer_app/app/modules/home/domain/services/home_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:http/http.dart' as http;
 
 part 'home_state.dart';
 
@@ -42,5 +45,12 @@ class HomeController extends Cubit<HomeState> {
         state.copyWith(homeStatus: HomeStatus.error),
       );
     }
+  }
+
+  void teste() async {
+    const String url = 'https://api.adviceslip.com/advice';
+    final uri = Uri.https('api.adviceslip.com', '/advice');
+    final response = await http.get(uri);
+    print(jsonDecode(response.body));
   }
 }
