@@ -73,23 +73,33 @@ class _HomeViewState extends State<HomeView> {
                   ],
                 ),
               ),
-              body: Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(119, 99, 81, 159),
-                      ),
-                      height: 140,
-                      width: screenSize.width,
-                      child: const Column(
-                        children: [],
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(119, 99, 81, 159),
+                        ),
+                        height: 140,
+                        width: screenSize.width,
+                        child: const Column(
+                          children: [],
+                        ),
                       ),
                     ),
                   ),
-                ),
+                  SizedBox(
+                      height: 130,
+                      width: 130,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text('ADVICE'),
+                      ))
+                ],
               ),
             ),
           );
