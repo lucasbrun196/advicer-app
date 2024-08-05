@@ -2,6 +2,8 @@ import 'package:advicer_app/app/modules/home/domain/entities/user_data.dart';
 import 'package:advicer_app/app/modules/home/domain/repositories/home_repository.dart';
 import 'package:advicer_app/app/modules/home/domain/services/home_service.dart';
 
+import '../entities/advice_data.dart';
+
 class HomeServiceImp implements HomeService {
   final HomeRepository homeRepository;
   HomeServiceImp({
@@ -21,5 +23,10 @@ class HomeServiceImp implements HomeService {
   @override
   Future<void> logout() async {
     return homeRepository.logout();
+  }
+
+  @override
+  Future<AdviceData> getAdvice() async {
+    return homeRepository.getAdvice();
   }
 }

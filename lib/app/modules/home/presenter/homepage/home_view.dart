@@ -19,6 +19,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     return BlocBuilder<HomeController, HomeState>(
       bloc: widget.controller,
       builder: (context, state) {
@@ -70,6 +71,24 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              body: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(119, 99, 81, 159),
+                      ),
+                      height: 140,
+                      width: screenSize.width,
+                      child: const Column(
+                        children: [],
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -138,7 +157,6 @@ class _HomeViewState extends State<HomeView> {
                       padding: const EdgeInsets.only(left: 34),
                       child: TextButton(
                         onPressed: () {
-                          widget.controller.teste();
                           Navigator.of(context).pop();
                         },
                         child: const Text('No'),
