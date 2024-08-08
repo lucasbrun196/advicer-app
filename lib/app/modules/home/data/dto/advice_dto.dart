@@ -24,8 +24,8 @@ class AdviceDto implements AdviceData {
 
   factory AdviceDto.fromMap(Map<String, dynamic> map) {
     return AdviceDto(
-      id: map["id"],
-      advice: map["advice"],
+      id: map["slip"]["id"],
+      advice: map["slip"]["advice"],
     );
   }
 }

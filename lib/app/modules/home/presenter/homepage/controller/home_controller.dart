@@ -43,4 +43,21 @@ class HomeController extends Cubit<HomeState> {
       );
     }
   }
+
+  void generateAdvice() async {
+    emit(
+      state.copyWith(getAdviceStatus: GetAdviceStatus.loading),
+    );
+    try {
+      await homeService.getAdvice().then((advicePromisse) => {
+            emit(
+              state.copyWith(adviceMessage: advicePromisse.advice),
+            ),
+          });
+    } catch (e) {
+      emit(
+        state.copyWith(getAdviceStatus: GetAdviceStatus.error),
+      );
+    }
+  }
 }

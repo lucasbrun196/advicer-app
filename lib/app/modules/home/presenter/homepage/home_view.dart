@@ -27,7 +27,10 @@ class _HomeViewState extends State<HomeView> {
           return SafeArea(
             child: Scaffold(
               appBar: AppBar(
-                title: Text(' Hello ${widget.controller.state.userName}'),
+                title: Text(
+                  ' Hello ${widget.controller.state.userName}',
+                  style: const TextStyle(fontFamily: 'Montserrat'),
+                ),
               ),
               drawer: Drawer(
                 child: ListView(
@@ -39,6 +42,7 @@ class _HomeViewState extends State<HomeView> {
                       child: Text(
                         'Advicer',
                         style: TextStyle(
+                          fontFamily: 'Montserrat',
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
@@ -57,8 +61,13 @@ class _HomeViewState extends State<HomeView> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('Logout'),
-                                  Icon(Icons.logout),
+                                  Text(
+                                    'Logout',
+                                    style: TextStyle(fontFamily: 'Montserrat'),
+                                  ),
+                                  Icon(
+                                    Icons.logout,
+                                  ),
                                 ],
                               ),
                             ),
@@ -86,8 +95,42 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         height: 140,
                         width: screenSize.width,
-                        child: const Column(
-                          children: [],
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BlocBuilder<HomeController, HomeState>(
+                              bloc: widget.controller,
+                              builder: (context, state) {
+                                if (widget.controller.state.adviceMessage !=
+                                    null) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 8),
+                                    child: Text(
+                                      textAlign: TextAlign.center,
+                                      '${widget.controller.state.adviceMessage}',
+                                      style: const TextStyle(
+                                          fontFamily: 'Montserrat'),
+                                    ),
+                                  );
+                                } else {
+                                  return const Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 8),
+                                    child: Text(
+                                      textAlign: TextAlign.center,
+                                      'Press the button to generate a advice',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
+                            )
+                          ],
                         ),
                       ),
                     ),
@@ -96,8 +139,18 @@ class _HomeViewState extends State<HomeView> {
                       height: 130,
                       width: 130,
                       child: TextButton(
-                        onPressed: () {},
-                        child: const Text('ADVICE'),
+                        style: const ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(
+                            Color.fromRGBO(108, 91, 164, 0.216),
+                          ),
+                        ),
+                        onPressed: () {
+                          widget.controller.generateAdvice();
+                        },
+                        child: const Text(
+                          'ADVICE',
+                          style: TextStyle(fontFamily: "Montserrat"),
+                        ),
                       ))
                 ],
               ),
@@ -125,7 +178,11 @@ class _HomeViewState extends State<HomeView> {
               ),
               const Text(
                 'Are you sure you want to leave?',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Montserrat',
+                ),
               ),
               const Icon(
                 Icons.logout,
@@ -159,7 +216,12 @@ class _HomeViewState extends State<HomeView> {
                             Navigator.of(context).pop();
                             widget.controller.logout();
                           },
-                          child: const Text('Yes'),
+                          child: const Text(
+                            'Yes',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -169,7 +231,12 @@ class _HomeViewState extends State<HomeView> {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: const Text('No'),
+                        child: const Text(
+                          'No',
+                          style: TextStyle(
+                            fontFamily: 'Montserrat',
+                          ),
+                        ),
                       ),
                     ),
                   ],

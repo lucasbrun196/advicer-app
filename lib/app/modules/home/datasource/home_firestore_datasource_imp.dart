@@ -45,12 +45,8 @@ class HomeFirestoreDatasourceImp implements HomeDatabaseDatasource {
     try {
       Map<String, dynamic> map = {};
       final uri = Uri.https('api.adviceslip.com', '/advice');
-      http.get(uri).then(
-            (response) => {
-              map = jsonDecode(response.body),
-            },
-          );
-
+      final response = await http.get(uri);
+      map = jsonDecode(response.body);
       return map;
     } catch (e) {
       throw Exception();
