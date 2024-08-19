@@ -42,7 +42,11 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
             },
           ),
           centerTitle: true,
-          title: const Text('Reset your password'),
+          title: const Text(
+            'Reset your password',
+            style: TextStyle(
+                fontFamily: 'Montserrat', fontWeight: FontWeight.w600),
+          ),
         ),
         body: Container(
           margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 75),
@@ -55,7 +59,10 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Fill in your email to change your password',
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Montserrat',
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -64,7 +71,12 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                   Form(
                     key: _formKey,
                     child: TextFormField(
-                      decoration: const InputDecoration(hintText: 'Email'),
+                      decoration: const InputDecoration(
+                        hintText: 'Email',
+                        hintStyle: TextStyle(
+                          fontFamily: 'Montserrat',
+                        ),
+                      ),
                       controller: _textEditingControllerEmail,
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
@@ -102,7 +114,13 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                         _textEditingControllerEmail.text);
                     _textEditingControllerEmail.text = '';
                   },
-                  child: const Text('Create account'),
+                  child: const Text(
+                    'Create account',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
               ),
             ],

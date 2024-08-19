@@ -42,7 +42,8 @@ class _HomeViewState extends State<HomeView> {
                 appBar: AppBar(
                   title: Text(
                     'Hello ${widget.controller.state.userName}',
-                    style: const TextStyle(fontFamily: 'Montserrat'),
+                    style: const TextStyle(
+                        fontFamily: 'Montserrat', fontWeight: FontWeight.w600),
                   ),
                 ),
                 drawer: Drawer(

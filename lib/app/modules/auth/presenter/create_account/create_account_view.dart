@@ -61,8 +61,12 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                           height: 40,
                         ),
                         TextFormField(
-                          decoration:
-                              const InputDecoration(hintText: 'First name'),
+                          decoration: const InputDecoration(
+                            hintText: 'First name',
+                            hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
+                          ),
                           controller: _textEditingControllerFirstName,
                           keyboardType: TextInputType.text,
                           validator: (value) {
@@ -76,8 +80,12 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                           height: 40,
                         ),
                         TextFormField(
-                          decoration:
-                              const InputDecoration(hintText: 'Last name'),
+                          decoration: const InputDecoration(
+                            hintText: 'Last name',
+                            hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
+                          ),
                           controller: _textEditingControllerLastName,
                           keyboardType: TextInputType.text,
                           validator: (value) {
@@ -91,7 +99,12 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                           height: 40,
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(hintText: 'Email'),
+                          decoration: const InputDecoration(
+                            hintText: 'Email',
+                            hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
+                          ),
                           controller: _textEditingControllerEmail,
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
@@ -105,8 +118,12 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                           height: 40,
                         ),
                         TextFormField(
-                          decoration:
-                              const InputDecoration(hintText: 'Password'),
+                          decoration: const InputDecoration(
+                            hintText: 'Password',
+                            hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
+                          ),
                           controller: _textEditingControllerPassword,
                           keyboardType: TextInputType.text,
                           validator: (value) {
@@ -158,7 +175,13 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                           _textEditingControllerPassword.text = '';
                         }
                       },
-                      child: const Text('Create account'),
+                      child: const Text(
+                        'Create account',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ),
                 ],

@@ -63,6 +63,9 @@ class _LoginViewState extends State<LoginView> {
                             TextFormField(
                               decoration: const InputDecoration(
                                 hintText: 'Email',
+                                hintStyle: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                ),
                                 icon: Icon(Icons.email),
                               ),
                               keyboardType: TextInputType.emailAddress,
@@ -78,6 +81,9 @@ class _LoginViewState extends State<LoginView> {
                                   child: TextFormField(
                                     decoration: const InputDecoration(
                                       hintText: 'Password',
+                                      hintStyle: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                      ),
                                       icon: Icon(Icons.password_rounded),
                                     ),
                                     obscureText: !_passWordIsVisible,
@@ -121,7 +127,12 @@ class _LoginViewState extends State<LoginView> {
                             _textEditingControllerEmail.text = '';
                             _textEditingControllerPassword.text = '';
                           },
-                          child: const Text('Login'),
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -135,7 +146,12 @@ class _LoginViewState extends State<LoginView> {
                           onPressed: () {
                             Modular.to.pushNamed('/createaccount');
                           },
-                          child: const Text('Create account'),
+                          child: const Text(
+                            'Create account',
+                            style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -147,8 +163,10 @@ class _LoginViewState extends State<LoginView> {
                         },
                         child: const Text(
                           'Forgot password',
-                          style:
-                              TextStyle(decoration: TextDecoration.underline),
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w500),
                         ),
                       )
                     ],
