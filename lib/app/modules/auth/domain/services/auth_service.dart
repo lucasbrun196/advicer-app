@@ -8,5 +8,7 @@ abstract class AuthService {
 
   Future<bool> isUserIsLogged();
 
-  Future<bool> sendEmailToResetPassword(String email);
+  Future<void> sendEmailToResetPassword(String email);
+
+  Future<bool> checkInternet();
 }

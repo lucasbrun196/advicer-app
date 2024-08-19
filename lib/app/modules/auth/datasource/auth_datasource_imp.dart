@@ -2,6 +2,8 @@ import 'package:advicer_app/app/modules/auth/data/datasources/auth_remote_dataso
 import 'package:advicer_app/app/modules/auth/domain/entities/user_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../core/exceptions/auth_exception.dart';
+
 class AuthDatasourceImp extends AuthRemoteDatasource {
   final FirebaseAuth firebaseAuth;
   AuthDatasourceImp({required this.firebaseAuth});
@@ -13,8 +15,10 @@ class AuthDatasourceImp extends AuthRemoteDatasource {
           await firebaseAuth.signInWithEmailAndPassword(
               email: userInfos.email, password: userInfos.password);
       return userCredential.user!.uid;
+    } on FirebaseAuthException catch (e) {
+      throw AuthException(code: e.code, message: e.message!);
     } catch (e) {
-      return '';
+      throw Exception();
     }
   }
 
@@ -24,8 +28,10 @@ class AuthDatasourceImp extends AuthRemoteDatasource {
       final newUser = await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
       return newUser.user!.uid;
+    } on FirebaseAuthException catch (e) {
+      throw AuthException(code: e.code, message: e.message);
     } catch (e) {
-      return '';
+      throw Exception();
     }
   }
 
@@ -35,12 +41,13 @@ class AuthDatasourceImp extends AuthRemoteDatasource {
   }
 
   @override
-  Future<bool> sendEmailToResetPassword(String email) async {
+  Future<void> sendEmailToResetPassword(String email) async {
     try {
       await firebaseAuth.sendPasswordResetEmail(email: email);
-      return true;
+    } on FirebaseAuthException catch (e) {
+      throw AuthException(code: e.code, message: e.message);
     } catch (e) {
-      return false;
+      throw Exception();
     }
   }
 }

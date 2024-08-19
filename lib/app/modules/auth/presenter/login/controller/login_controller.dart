@@ -1,3 +1,4 @@
+import 'package:advicer_app/app/core/exceptions/auth_exception.dart';
 import 'package:advicer_app/app/modules/auth/domain/services/auth_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,17 +14,34 @@ class LoginController extends Cubit<LoginState> {
 
   Future<void> login(UserInfos userInfos) async {
     emit(state.copyWith(loginStatus: LoginStatus.loading));
-    try {
-      final loginResult = await authService.login(userInfos);
-      if (loginResult) {
-        emit(state.copyWith(loginStatus: LoginStatus.success));
-        redirectToHome();
+    authService.checkInternet().then((has) async {
+      if (has) {
+        try {
+          final loginResult = await authService.login(userInfos);
+          if (loginResult) {
+            emit(state.copyWith(loginStatus: LoginStatus.success));
+            redirectToHome();
+          } else {
+            emit(state.copyWith(loginStatus: LoginStatus.error));
+          }
+        } on AuthException catch (e) {
+          emit(
+            state.copyWith(
+                loginStatus: LoginStatus.error, errorMessage: e.message),
+          );
+        } catch (e) {
+          emit(
+            state.copyWith(loginStatus: LoginStatus.error),
+          );
+        }
       } else {
-        emit(state.copyWith(loginStatus: LoginStatus.error));
+        emit(
+          state.copyWith(
+              loginStatus: LoginStatus.error,
+              errorMessage: 'Check your internet connection'),
+        );
       }
-    } catch (e) {
-      emit(state.copyWith(loginStatus: LoginStatus.error));
-    }
+    });
   }
 
   void redirectToHome() {

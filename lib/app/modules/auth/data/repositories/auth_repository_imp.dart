@@ -33,7 +33,7 @@ class AuthRepositoryImp extends AuthRepository {
   }
 
   @override
-  Future<bool> sendEmailToResetPassword(String email) async {
+  Future<void> sendEmailToResetPassword(String email) async {
     return await authRemoteDatasource.sendEmailToResetPassword(email);
   }
 }

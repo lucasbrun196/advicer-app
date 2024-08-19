@@ -7,6 +7,10 @@ class FirestoreDatasourceImp extends AuthFirestoreRemote {
   FirestoreDatasourceImp({required this.firebaseFirestore});
   @override
   Future<void> createUserOnDb(Map<String, dynamic> mapUser, String uid) async {
-    await firebaseFirestore.collection('users').doc(uid).set(mapUser);
+    try {
+      await firebaseFirestore.collection('users').doc(uid).set(mapUser);
+    } catch (e) {
+      throw Exception();
+    }
   }
 }

@@ -36,7 +36,7 @@ class _LoginViewState extends State<LoginView> {
         listener: (context, state) {
           if (state.loginStatus == LoginStatus.error) {
             AsukaSnackbar.alert(
-              'Login error',
+              state.errorMessage!,
               elevation: 5,
             ).show();
           }

@@ -28,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
             child: Scaffold(
               appBar: AppBar(
                 title: Text(
-                  ' Hello ${widget.controller.state.userName}',
+                  'Hello ${widget.controller.state.userName}',
                   style: const TextStyle(fontFamily: 'Montserrat'),
                 ),
               ),
@@ -110,7 +110,10 @@ class _HomeViewState extends State<HomeView> {
                                       textAlign: TextAlign.center,
                                       '${widget.controller.state.adviceMessage}',
                                       style: const TextStyle(
-                                          fontFamily: 'Montserrat'),
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
                                   );
                                 } else {
@@ -149,7 +152,11 @@ class _HomeViewState extends State<HomeView> {
                         },
                         child: const Text(
                           'ADVICE',
-                          style: TextStyle(fontFamily: "Montserrat"),
+                          style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ))
                 ],

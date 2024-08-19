@@ -25,7 +25,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
           previous.forgotPasswordStatus != current.forgotPasswordStatus,
       listener: (context, state) {
         if (state.forgotPasswordStatus == ForgotPasswordStatus.error) {
-          return AsukaSnackbar.alert('Error when sending email').show();
+          return AsukaSnackbar.alert(state.errorMessage!).show();
         } else if (state.forgotPasswordStatus == ForgotPasswordStatus.success) {
           return AsukaSnackbar.success(
                   'An email was sent to you, check you inbox')

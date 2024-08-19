@@ -7,5 +7,5 @@ abstract class AuthRemoteDatasource {
 
   Future<String> getLastUserUid();
 
-  Future<bool> sendEmailToResetPassword(String email);
+  Future<void> sendEmailToResetPassword(String email);
 }

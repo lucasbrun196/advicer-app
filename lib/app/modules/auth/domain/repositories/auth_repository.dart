@@ -10,5 +10,5 @@ abstract class AuthRepository {
 
   Future<String> isUserIsLogged();
 
-  Future<bool> sendEmailToResetPassword(String email);
+  Future<void> sendEmailToResetPassword(String email);
 }

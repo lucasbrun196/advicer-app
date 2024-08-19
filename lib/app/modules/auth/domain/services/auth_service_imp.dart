@@ -1,7 +1,10 @@
+import 'package:advicer_app/app/core/exceptions/auth_exception.dart';
 import 'package:advicer_app/app/modules/auth/domain/entities/new_user.dart';
 import 'package:advicer_app/app/modules/auth/domain/entities/user_info.dart';
 import 'package:advicer_app/app/modules/auth/domain/repositories/auth_repository.dart';
 import 'package:advicer_app/app/modules/auth/domain/services/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class AuthServiceImp extends AuthService {
   final AuthRepository authRepository;
@@ -26,6 +29,8 @@ class AuthServiceImp extends AuthService {
       } else {
         return false;
       }
+    } on FirebaseAuthException catch (e) {
+      throw AuthException(code: e.code, message: e.message);
     } catch (e) {
       return false;
     }
@@ -42,7 +47,12 @@ class AuthServiceImp extends AuthService {
   }
 
   @override
-  Future<bool> sendEmailToResetPassword(String email) async {
+  Future<void> sendEmailToResetPassword(String email) async {
     return await authRepository.sendEmailToResetPassword(email);
+  }
+
+  @override
+  Future<bool> checkInternet() async {
+    return await InternetConnectionChecker().hasConnection;
   }
 }
