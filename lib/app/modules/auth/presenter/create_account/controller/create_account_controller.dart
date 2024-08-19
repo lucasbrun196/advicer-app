@@ -1,6 +1,7 @@
 import 'package:advicer_app/app/modules/auth/domain/entities/new_user.dart';
 import 'package:advicer_app/app/modules/auth/domain/services/auth_service.dart';
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -22,6 +23,12 @@ class CreateAccountController extends Cubit<CreateAccountState> {
       } else {
         emit(state.copyWith(createAccountStatus: CreateAccountStatus.error));
       }
+    } on FirebaseAuthException catch (e) {
+      emit(
+        state.copyWith(
+            createAccountStatus: CreateAccountStatus.error,
+            errorMessage: e.message),
+      );
     } catch (e) {
       emit(state.copyWith(createAccountStatus: CreateAccountStatus.error));
     }
