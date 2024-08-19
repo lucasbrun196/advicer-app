@@ -9,12 +9,14 @@ class HomeState extends Equatable {
   final String userName;
   final String? adviceMessage;
   final GetAdviceStatus getAdviceStatus;
+  final String? errorMessage;
 
   const HomeState({
     required this.homeStatus,
     required this.userName,
     this.adviceMessage,
     required this.getAdviceStatus,
+    this.errorMessage,
   });
 
   @override
@@ -23,6 +25,7 @@ class HomeState extends Equatable {
         userName,
         adviceMessage,
         getAdviceStatus,
+        errorMessage,
       ];
 
   const HomeState.initial()
@@ -31,6 +34,7 @@ class HomeState extends Equatable {
           userName: '',
           adviceMessage: null,
           getAdviceStatus: GetAdviceStatus.initial,
+          errorMessage: 'Error',
         );
 
   HomeState copyWith({
@@ -38,12 +42,14 @@ class HomeState extends Equatable {
     String? userName,
     String? adviceMessage,
     GetAdviceStatus? getAdviceStatus,
+    String? errorMessage,
   }) {
     return HomeState(
       homeStatus: homeStatus ?? this.homeStatus,
       userName: userName ?? this.userName,
       adviceMessage: adviceMessage ?? this.adviceMessage,
       getAdviceStatus: getAdviceStatus ?? this.getAdviceStatus,
+      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 }

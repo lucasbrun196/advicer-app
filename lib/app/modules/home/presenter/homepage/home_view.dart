@@ -1,4 +1,5 @@
 import 'package:advicer_app/app/modules/home/presenter/homepage/controller/home_controller.dart';
+import 'package:asuka/snackbars/asuka_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,153 +21,167 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    return BlocBuilder<HomeController, HomeState>(
+    return BlocListener<HomeController, HomeState>(
       bloc: widget.controller,
-      builder: (context, state) {
-        if (state.homeStatus == HomeStatus.success) {
-          return SafeArea(
-            child: Scaffold(
-              appBar: AppBar(
-                title: Text(
-                  'Hello ${widget.controller.state.userName}',
-                  style: const TextStyle(fontFamily: 'Montserrat'),
+      listenWhen: (previous, current) =>
+          previous.homeStatus != current.homeStatus,
+      listener: (context, state) {
+        if (state.homeStatus == HomeStatus.error) {
+          AsukaSnackbar.alert(
+            state.errorMessage!,
+            elevation: 5,
+          ).show();
+        }
+      },
+      child: BlocBuilder<HomeController, HomeState>(
+        bloc: widget.controller,
+        builder: (context, state) {
+          if (state.homeStatus == HomeStatus.success) {
+            return SafeArea(
+              child: Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                    'Hello ${widget.controller.state.userName}',
+                    style: const TextStyle(fontFamily: 'Montserrat'),
+                  ),
                 ),
-              ),
-              drawer: Drawer(
-                child: ListView(
-                  children: [
-                    const DrawerHeader(
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(108, 91, 164, 0.354),
-                      ),
-                      child: Text(
-                        'Advicer',
-                        style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                drawer: Drawer(
+                  child: ListView(
+                    children: [
+                      const DrawerHeader(
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(108, 91, 164, 0.354),
+                        ),
+                        child: Text(
+                          'Advicer',
+                          style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12, right: 12),
-                      child: Column(
-                        children: [
-                          InkWell(
-                            onTap: () async {
-                              await modal(context);
-                            },
-                            child: const ListTile(
-                              title: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Logout',
-                                    style: TextStyle(fontFamily: 'Montserrat'),
-                                  ),
-                                  Icon(
-                                    Icons.logout,
-                                  ),
-                                ],
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12, right: 12),
+                        child: Column(
+                          children: [
+                            InkWell(
+                              onTap: () async {
+                                await modal(context);
+                              },
+                              child: const ListTile(
+                                title: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Logout',
+                                      style:
+                                          TextStyle(fontFamily: 'Montserrat'),
+                                    ),
+                                    Icon(
+                                      Icons.logout,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          const Divider(
-                            color: Color.fromRGBO(108, 91, 164, 0.354),
-                            thickness: 0.5,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(119, 99, 81, 159),
-                        ),
-                        height: 140,
-                        width: screenSize.width,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            BlocBuilder<HomeController, HomeState>(
-                              bloc: widget.controller,
-                              builder: (context, state) {
-                                if (widget.controller.state.adviceMessage !=
-                                    null) {
-                                  return Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 8),
-                                    child: Text(
-                                      textAlign: TextAlign.center,
-                                      '${widget.controller.state.adviceMessage}',
-                                      style: const TextStyle(
-                                        fontFamily: 'Montserrat',
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  );
-                                } else {
-                                  return const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 8),
-                                    child: Text(
-                                      textAlign: TextAlign.center,
-                                      'Press the button to generate a advice',
-                                      style: TextStyle(
-                                        fontFamily: 'Montserrat',
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  );
-                                }
-                              },
-                            )
+                            const Divider(
+                              color: Color.fromRGBO(108, 91, 164, 0.354),
+                              thickness: 0.5,
+                            ),
                           ],
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                  SizedBox(
-                      height: 130,
-                      width: 130,
-                      child: TextButton(
-                        style: const ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            Color.fromRGBO(108, 91, 164, 0.216),
+                ),
+                body: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(119, 99, 81, 159),
+                          ),
+                          height: 140,
+                          width: screenSize.width,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              BlocBuilder<HomeController, HomeState>(
+                                bloc: widget.controller,
+                                builder: (context, state) {
+                                  if (widget.controller.state.adviceMessage !=
+                                      null) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8, vertical: 8),
+                                      child: Text(
+                                        textAlign: TextAlign.center,
+                                        '${widget.controller.state.adviceMessage}',
+                                        style: const TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    return const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 8, vertical: 8),
+                                      child: Text(
+                                        textAlign: TextAlign.center,
+                                        'Press the button to generate a advice',
+                                        style: TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
+                              )
+                            ],
                           ),
                         ),
-                        onPressed: () {
-                          widget.controller.generateAdvice();
-                        },
-                        child: const Text(
-                          'ADVICE',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                        height: 130,
+                        width: 130,
+                        child: TextButton(
+                          style: const ButtonStyle(
+                            backgroundColor: WidgetStatePropertyAll(
+                              Color.fromRGBO(108, 91, 164, 0.216),
+                            ),
                           ),
-                        ),
-                      ))
-                ],
+                          onPressed: () {
+                            widget.controller.generateAdvice();
+                          },
+                          child: const Text(
+                            'ADVICE',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ))
+                  ],
+                ),
               ),
-            ),
-          );
-        } else {
-          return Container();
-        }
-      },
+            );
+          } else {
+            return Container();
+          }
+        },
+      ),
     );
   }
 

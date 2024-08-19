@@ -13,18 +13,31 @@ class HomeController extends Cubit<HomeState> {
     emit(
       state.copyWith(homeStatus: HomeStatus.loading),
     );
-    try {
-      final userUid = await homeService.getCurrentUserUid();
-      final user = await homeService.getUserData(userUid);
-      emit(
-        state.copyWith(
-            userName: user.firstName, homeStatus: HomeStatus.success),
-      );
-    } catch (e) {
-      emit(
-        state.copyWith(homeStatus: HomeStatus.error),
-      );
-    }
+    await homeService.checkInternetConnection().then((has) async {
+      if (has) {
+        try {
+          final userUid = await homeService.getCurrentUserUid();
+          final user = await homeService.getUserData(userUid);
+          emit(
+            state.copyWith(
+                userName: user.firstName, homeStatus: HomeStatus.success),
+          );
+        } catch (e) {
+          emit(
+            state.copyWith(
+                homeStatus: HomeStatus.error, errorMessage: e.toString()),
+          );
+        }
+      } else {
+        emit(
+          state.copyWith(
+            homeStatus: HomeStatus.error,
+            getAdviceStatus: GetAdviceStatus.error,
+            errorMessage: 'Check yout internet connection',
+          ),
+        );
+      }
+    });
   }
 
   void logout() async {
@@ -39,7 +52,8 @@ class HomeController extends Cubit<HomeState> {
       Modular.to.navigate('/login');
     } catch (e) {
       emit(
-        state.copyWith(homeStatus: HomeStatus.error),
+        state.copyWith(
+            homeStatus: HomeStatus.error, errorMessage: e.toString()),
       );
     }
   }
@@ -48,16 +62,31 @@ class HomeController extends Cubit<HomeState> {
     emit(
       state.copyWith(getAdviceStatus: GetAdviceStatus.loading),
     );
-    try {
-      await homeService.getAdvice().then((advicePromisse) => {
-            emit(
-              state.copyWith(adviceMessage: advicePromisse.advice),
-            ),
-          });
-    } catch (e) {
-      emit(
-        state.copyWith(getAdviceStatus: GetAdviceStatus.error),
-      );
-    }
+    await homeService.checkInternetConnection().then((has) async {
+      if (has) {
+        try {
+          await homeService.getAdvice().then((advicePromisse) => {
+                emit(
+                  state.copyWith(adviceMessage: advicePromisse.advice),
+                ),
+              });
+        } catch (e) {
+          emit(
+            state.copyWith(
+                homeStatus: HomeStatus.error,
+                getAdviceStatus: GetAdviceStatus.error,
+                errorMessage: e.toString()),
+          );
+        }
+      } else {
+        emit(
+          state.copyWith(
+            homeStatus: HomeStatus.error,
+            getAdviceStatus: GetAdviceStatus.error,
+            errorMessage: 'Check yout internet connection',
+          ),
+        );
+      }
+    });
   }
 }

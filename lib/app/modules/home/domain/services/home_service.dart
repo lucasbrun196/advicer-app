@@ -10,4 +10,6 @@ abstract class HomeService {
   Future<void> logout();
 
   Future<AdviceData> getAdvice();
+
+  Future<bool> checkInternetConnection();
 }
