@@ -6,4 +6,6 @@ abstract class HomeDatabaseDatasource {
   Future<void> logout();
 
   Future<Map<String, dynamic>> getApiData();
+
+  Future<Map<String, dynamic>> getAboutDataInformation();
 }

@@ -89,4 +89,8 @@ class HomeController extends Cubit<HomeState> {
       }
     });
   }
+
+  void navigateToAbaoutPage() {
+    Modular.to.pushNamed('/home/about');
+  }
 }

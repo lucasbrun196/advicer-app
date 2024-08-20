@@ -1,9 +1,11 @@
 import 'package:advicer_app/app/modules/home/data/datasource/home_database_datasource.dart';
+import 'package:advicer_app/app/modules/home/data/dto/about_data_dto.dart';
 import 'package:advicer_app/app/modules/home/data/dto/advice_dto.dart';
 import 'package:advicer_app/app/modules/home/data/dto/user_data_dto.dart';
 import 'package:advicer_app/app/modules/home/domain/entities/user_data.dart';
 import 'package:advicer_app/app/modules/home/domain/repositories/home_repository.dart';
 
+import '../../domain/entities/about_data.dart';
 import '../../domain/entities/advice_data.dart';
 
 class HomeRepositoryImp extends HomeRepository {
@@ -41,6 +43,20 @@ class HomeRepositoryImp extends HomeRepository {
           return AdviceDto.fromMap(adviceMap);
         },
       );
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<AboutData> getAboutDataInformation() async {
+    try {
+      return await homeDatabaseDatasource.getAboutDataInformation().then((map) {
+        if (map.isEmpty) {
+          throw Exception();
+        }
+        return AboutDataDto.fromMap(map);
+      });
     } catch (e) {
       throw Exception();
     }

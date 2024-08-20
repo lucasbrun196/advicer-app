@@ -3,6 +3,7 @@ import 'package:advicer_app/app/modules/home/domain/repositories/home_repository
 import 'package:advicer_app/app/modules/home/domain/services/home_service.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
+import '../entities/about_data.dart';
 import '../entities/advice_data.dart';
 
 class HomeServiceImp implements HomeService {
@@ -34,5 +35,10 @@ class HomeServiceImp implements HomeService {
   @override
   Future<bool> checkInternetConnection() async {
     return await InternetConnectionChecker().hasConnection;
+  }
+
+  @override
+  Future<AboutData> getAboutDataInformation() async {
+    return homeRepository.getAboutDataInformation();
   }
 }

@@ -91,6 +91,31 @@ class _HomeViewState extends State<HomeView> {
                               color: Color.fromRGBO(108, 91, 164, 0.354),
                               thickness: 0.5,
                             ),
+                            InkWell(
+                              onTap: () async {
+                                widget.controller.navigateToAbaoutPage();
+                              },
+                              child: const ListTile(
+                                title: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'About',
+                                      style:
+                                          TextStyle(fontFamily: 'Montserrat'),
+                                    ),
+                                    Icon(
+                                      Icons.question_mark,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const Divider(
+                              color: Color.fromRGBO(108, 91, 164, 0.354),
+                              thickness: 0.5,
+                            ),
                           ],
                         ),
                       ),

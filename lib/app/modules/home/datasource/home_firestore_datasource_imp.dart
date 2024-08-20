@@ -52,4 +52,19 @@ class HomeFirestoreDatasourceImp implements HomeDatabaseDatasource {
       throw Exception();
     }
   }
+
+  @override
+  Future<Map<String, dynamic>> getAboutDataInformation() async {
+    try {
+      final doc = firebaseFirestore.collection('about').doc('aboutDoc');
+      final docSnapshot = await doc.get();
+      if (docSnapshot.exists) {
+        return docSnapshot.data() as Map<String, dynamic>;
+      } else {
+        throw Exception();
+      }
+    } catch (e) {
+      throw Exception();
+    }
+  }
 }

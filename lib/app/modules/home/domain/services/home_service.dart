@@ -1,5 +1,6 @@
 import 'package:advicer_app/app/modules/home/domain/entities/user_data.dart';
 
+import '../entities/about_data.dart';
 import '../entities/advice_data.dart';
 
 abstract class HomeService {
@@ -12,4 +13,6 @@ abstract class HomeService {
   Future<AdviceData> getAdvice();
 
   Future<bool> checkInternetConnection();
+
+  Future<AboutData> getAboutDataInformation();
 }
