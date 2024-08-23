@@ -1,7 +1,9 @@
 import 'package:advicer_app/app/modules/home/presenter/homepage/controller/home_controller.dart';
 import 'package:asuka/snackbars/asuka_snack_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeView extends StatefulWidget {
   final HomeController controller;
@@ -127,55 +129,73 @@ class _HomeViewState extends State<HomeView> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Color.fromARGB(119, 99, 81, 159),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: Color.fromARGB(119, 99, 81, 159),
+                              ),
+                              height: 140,
+                              width: screenSize.width,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  BlocBuilder<HomeController, HomeState>(
+                                    bloc: widget.controller,
+                                    builder: (context, state) {
+                                      if (widget
+                                              .controller.state.adviceMessage !=
+                                          null) {
+                                        return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8, vertical: 8),
+                                          child: Text(
+                                            textAlign: TextAlign.center,
+                                            '${widget.controller.state.adviceMessage}',
+                                            style: const TextStyle(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        );
+                                      } else {
+                                        return const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 8, vertical: 8),
+                                          child: Text(
+                                            textAlign: TextAlign.center,
+                                            'Press the button to generate a advice',
+                                            style: TextStyle(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
-                          height: 140,
-                          width: screenSize.width,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              BlocBuilder<HomeController, HomeState>(
-                                bloc: widget.controller,
-                                builder: (context, state) {
-                                  if (widget.controller.state.adviceMessage !=
-                                      null) {
-                                    return Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 8),
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        '${widget.controller.state.adviceMessage}',
-                                        style: const TextStyle(
-                                          fontFamily: 'Montserrat',
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    );
-                                  } else {
-                                    return const Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 8),
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        'Press the button to generate a advice',
-                                        style: TextStyle(
-                                          fontFamily: 'Montserrat',
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                },
-                              )
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20, right: 30),
+                            child: GestureDetector(
+                              onTap: () {
+                                // to do
+                              },
+                              child: SvgPicture.asset(
+                                'assets/heart.svg',
+                                height: 40,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                     SizedBox(
