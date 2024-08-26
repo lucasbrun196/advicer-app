@@ -10,6 +10,7 @@ class HomeState extends Equatable {
   final String? adviceMessage;
   final GetAdviceStatus getAdviceStatus;
   final String? errorMessage;
+  final bool isLiked;
 
   const HomeState({
     required this.homeStatus,
@@ -17,6 +18,7 @@ class HomeState extends Equatable {
     this.adviceMessage,
     required this.getAdviceStatus,
     this.errorMessage,
+    required this.isLiked,
   });
 
   @override
@@ -26,6 +28,7 @@ class HomeState extends Equatable {
         adviceMessage,
         getAdviceStatus,
         errorMessage,
+        isLiked,
       ];
 
   const HomeState.initial()
@@ -35,6 +38,7 @@ class HomeState extends Equatable {
           adviceMessage: null,
           getAdviceStatus: GetAdviceStatus.initial,
           errorMessage: 'Error',
+          isLiked: false,
         );
 
   HomeState copyWith({
@@ -43,6 +47,8 @@ class HomeState extends Equatable {
     String? adviceMessage,
     GetAdviceStatus? getAdviceStatus,
     String? errorMessage,
+    String? assetImage,
+    bool? isLiked,
   }) {
     return HomeState(
       homeStatus: homeStatus ?? this.homeStatus,
@@ -50,6 +56,7 @@ class HomeState extends Equatable {
       adviceMessage: adviceMessage ?? this.adviceMessage,
       getAdviceStatus: getAdviceStatus ?? this.getAdviceStatus,
       errorMessage: errorMessage ?? this.errorMessage,
+      isLiked: isLiked ?? this.isLiked,
     );
   }
 }

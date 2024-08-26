@@ -1,6 +1,5 @@
 import 'package:advicer_app/app/modules/home/presenter/homepage/controller/home_controller.dart';
 import 'package:asuka/snackbars/asuka_snack_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -183,17 +182,40 @@ class _HomeViewState extends State<HomeView> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20, right: 30),
-                            child: GestureDetector(
-                              onTap: () {
-                                // to do
-                              },
-                              child: SvgPicture.asset(
-                                'assets/heart.svg',
-                                height: 40,
-                              ),
-                            ),
+                          BlocBuilder<HomeController, HomeState>(
+                            bloc: widget.controller,
+                            builder: (context, state) {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 20, right: 30),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    if (widget.controller.state.adviceMessage !=
+                                        null) {
+                                      if (widget.controller.state.isLiked ==
+                                          true) {
+                                        widget.controller
+                                            .changeLikedStatus(false);
+                                      } else {
+                                        widget.controller
+                                            .changeLikedStatus(true);
+                                      }
+                                    }
+                                  },
+                                  child: SvgPicture.asset(
+                                    widget.controller.state.isLiked == true
+                                        ? 'assets/colorfull_heart.svg'
+                                        : 'assets/heart.svg',
+                                    height: 40,
+                                    colorFilter:
+                                        widget.controller.state.isLiked == true
+                                            ? const ColorFilter.mode(
+                                                Colors.red, BlendMode.srcIn)
+                                            : null,
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
@@ -218,8 +240,31 @@ class _HomeViewState extends State<HomeView> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                        ))
+                        )),
+                    BlocBuilder<HomeController, HomeState>(
+                      bloc: widget.controller,
+                      builder: (context, state) {
+                        if (state.homeStatus == HomeStatus.loading ||
+                            state.getAdviceStatus == GetAdviceStatus.loading) {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              color: Color.fromRGBO(108, 91, 164, 1),
+                            ),
+                          );
+                        } else {
+                          return Container();
+                        }
+                      },
+                    )
                   ],
+                ),
+              ),
+            );
+          } else if (widget.controller.state.homeStatus == HomeStatus.loading) {
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(
+                  color: Color.fromRGBO(108, 91, 164, 1),
                 ),
               ),
             );

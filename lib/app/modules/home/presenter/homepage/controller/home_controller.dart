@@ -67,7 +67,9 @@ class HomeController extends Cubit<HomeState> {
         try {
           await homeService.getAdvice().then((advicePromisse) => {
                 emit(
-                  state.copyWith(adviceMessage: advicePromisse.advice),
+                  state.copyWith(
+                      adviceMessage: advicePromisse.advice,
+                      getAdviceStatus: GetAdviceStatus.success),
                 ),
               });
         } catch (e) {
@@ -92,5 +94,9 @@ class HomeController extends Cubit<HomeState> {
 
   void navigateToAbaoutPage() {
     Modular.to.pushNamed('/home/about');
+  }
+
+  void changeLikedStatus(bool liked) {
+    emit(state.copyWith(isLiked: liked));
   }
 }
