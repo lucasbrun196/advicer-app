@@ -13,4 +13,14 @@ class FirestoreDatasourceImp extends AuthFirestoreRemote {
       throw Exception();
     }
   }
+
+  @override
+  Future<void> createEmptyAdvices(String uid) async {
+    const Map<String, dynamic> emptyMap = {"advicesMap": {}};
+    try {
+      await firebaseFirestore.collection('favAdvices').doc(uid).set(emptyMap);
+    } catch (e) {
+      throw Exception();
+    }
+  }
 }

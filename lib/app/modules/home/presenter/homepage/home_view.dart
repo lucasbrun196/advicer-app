@@ -191,7 +191,10 @@ class _HomeViewState extends State<HomeView> {
                                 child: GestureDetector(
                                   onTap: () {
                                     if (widget.controller.state.adviceMessage !=
-                                        null) {
+                                            null &&
+                                        widget.controller.state
+                                                .getAdviceStatus ==
+                                            GetAdviceStatus.success) {
                                       if (widget.controller.state.isLiked ==
                                           true) {
                                         widget.controller
@@ -230,7 +233,10 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                           onPressed: () {
-                            widget.controller.generateAdvice();
+                            if (widget.controller.state.getAdviceStatus ==
+                                GetAdviceStatus.success) {
+                              widget.controller.generateAdvice();
+                            }
                           },
                           child: const Text(
                             'ADVICE',

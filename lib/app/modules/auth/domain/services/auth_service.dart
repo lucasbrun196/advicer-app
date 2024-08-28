@@ -11,4 +11,6 @@ abstract class AuthService {
   Future<void> sendEmailToResetPassword(String email);
 
   Future<bool> checkInternet();
+
+  Future<void> createEmptyAdvicesListDb();
 }
