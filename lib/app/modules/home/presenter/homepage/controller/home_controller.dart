@@ -114,11 +114,13 @@ class HomeController extends Cubit<HomeState> {
               saveAdviceStatus: SaveAdviceStatus.error,
               errorMessage: 'You have already 5 saved advices, delete one'),
         );
+        changeLikedStatus(false);
       } else {
         await homeService.saveAdvice(state.adviceId!, state.adviceMessage!);
         emit(
           state.copyWith(saveAdviceStatus: SaveAdviceStatus.success),
         );
+        changeLikedStatus(true);
       }
     } catch (e) {
       emit(
@@ -136,7 +138,7 @@ class HomeController extends Cubit<HomeState> {
             ),
             emit(
               state.copyWith(isLiked: containsAdvice),
-            )
+            ),
           },
         );
   }
@@ -152,6 +154,7 @@ class HomeController extends Cubit<HomeState> {
       emit(
         state.copyWith(deleteAdviceStatus: DeleteAdviceStatus.success),
       );
+      changeLikedStatus(false);
     } catch (e) {
       emit(
         state.copyWith(deleteAdviceStatus: DeleteAdviceStatus.error),

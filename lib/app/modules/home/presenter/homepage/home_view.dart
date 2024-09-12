@@ -198,12 +198,8 @@ class _HomeViewState extends State<HomeView> {
                                       if (widget.controller.state.isLiked ==
                                           true) {
                                         widget.controller.deleteAdvice();
-                                        widget.controller
-                                            .changeLikedStatus(false);
                                       } else {
                                         widget.controller.saveAdvice();
-                                        widget.controller
-                                            .changeLikedStatus(true);
                                       }
                                     }
                                   },
