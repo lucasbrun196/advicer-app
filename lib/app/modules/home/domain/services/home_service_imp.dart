@@ -51,4 +51,9 @@ class HomeServiceImp implements HomeService {
   Future<Map<String, dynamic>> checkSavedAdvices() async {
     return await homeRepository.getSavedAdvices();
   }
+
+  @override
+  Future<void> deleteAdvice(String adviceId) async {
+    return await homeRepository.deleteAdvice(adviceId);
+  }
 }

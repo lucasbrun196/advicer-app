@@ -197,10 +197,10 @@ class _HomeViewState extends State<HomeView> {
                                             GetAdviceStatus.success) {
                                       if (widget.controller.state.isLiked ==
                                           true) {
+                                        widget.controller.deleteAdvice();
                                         widget.controller
                                             .changeLikedStatus(false);
                                       } else {
-                                        //fazer salvar o advice
                                         widget.controller.saveAdvice();
                                         widget.controller
                                             .changeLikedStatus(true);
@@ -257,7 +257,9 @@ class _HomeViewState extends State<HomeView> {
                         if (state.homeStatus == HomeStatus.loading ||
                             state.getAdviceStatus == GetAdviceStatus.loading ||
                             state.saveAdviceStatus ==
-                                SaveAdviceStatus.loading) {
+                                SaveAdviceStatus.loading ||
+                            state.deleteAdviceStatus ==
+                                DeleteAdviceStatus.loading) {
                           return const Center(
                             child: CircularProgressIndicator(
                               color: Color.fromRGBO(108, 91, 164, 1),

@@ -6,6 +6,8 @@ enum GetAdviceStatus { initial, success, loading, error }
 
 enum SaveAdviceStatus { initial, success, loading, error }
 
+enum DeleteAdviceStatus { initial, success, loading, error }
+
 class HomeState extends Equatable {
   final HomeStatus homeStatus;
   final String userName;
@@ -15,6 +17,7 @@ class HomeState extends Equatable {
   final String? errorMessage;
   final bool isLiked;
   final SaveAdviceStatus saveAdviceStatus;
+  final DeleteAdviceStatus deleteAdviceStatus;
 
   const HomeState({
     required this.homeStatus,
@@ -25,6 +28,7 @@ class HomeState extends Equatable {
     this.errorMessage,
     required this.isLiked,
     required this.saveAdviceStatus,
+    required this.deleteAdviceStatus,
   });
 
   @override
@@ -37,6 +41,7 @@ class HomeState extends Equatable {
         isLiked,
         saveAdviceStatus,
         adviceId,
+        deleteAdviceStatus
       ];
 
   const HomeState.initial()
@@ -49,6 +54,7 @@ class HomeState extends Equatable {
           errorMessage: 'Error',
           isLiked: false,
           saveAdviceStatus: SaveAdviceStatus.initial,
+          deleteAdviceStatus: DeleteAdviceStatus.initial,
         );
 
   HomeState copyWith({
@@ -61,6 +67,7 @@ class HomeState extends Equatable {
     String? assetImage,
     bool? isLiked,
     SaveAdviceStatus? saveAdviceStatus,
+    DeleteAdviceStatus? deleteAdviceStatus,
   }) {
     return HomeState(
       homeStatus: homeStatus ?? this.homeStatus,
@@ -71,6 +78,7 @@ class HomeState extends Equatable {
       errorMessage: errorMessage ?? this.errorMessage,
       isLiked: isLiked ?? this.isLiked,
       saveAdviceStatus: saveAdviceStatus ?? this.saveAdviceStatus,
+      deleteAdviceStatus: deleteAdviceStatus ?? this.deleteAdviceStatus,
     );
   }
 }

@@ -15,4 +15,6 @@ abstract class HomeRepository {
   Future<void> saveAdviceRepo(int id, String message);
 
   Future<Map<String, dynamic>> getSavedAdvices();
+
+  Future<void> deleteAdvice(String adviceId);
 }

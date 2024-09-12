@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'package:http/http.dart' as http;
 import 'package:advicer_app/app/modules/home/data/datasource/home_database_datasource.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -93,6 +92,23 @@ class HomeFirestoreDatasourceImp implements HomeDatabaseDatasource {
               map['id'].toString(): map['message'],
             },
           )
+        },
+      );
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<void> deleteAdvice(String idToDelete) async {
+    try {
+      await getCurrentUserUid().then(
+        (uid) => {
+          firebaseFirestore.collection('favAdvices').doc(uid).update(
+            {
+              idToDelete: FieldValue.delete(),
+            },
+          ),
         },
       );
     } catch (e) {

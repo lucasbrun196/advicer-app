@@ -1,4 +1,3 @@
-import 'package:advicer_app/app/modules/home/domain/entities/advice_data.dart';
 import 'package:advicer_app/app/modules/home/domain/entities/user_data.dart';
 
 class UserDataDto implements UserData {

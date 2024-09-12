@@ -81,4 +81,9 @@ class HomeRepositoryImp extends HomeRepository {
       throw Exception();
     }
   }
+
+  @override
+  Future<void> deleteAdvice(String adviceId) async {
+    return await homeDatabaseDatasource.deleteAdvice(adviceId);
+  }
 }

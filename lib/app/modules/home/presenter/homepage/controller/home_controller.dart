@@ -1,5 +1,3 @@
-import 'package:advicer_app/app/modules/home/data/dto/advice_dto.dart';
-import 'package:advicer_app/app/modules/home/domain/entities/advice_data.dart';
 import 'package:advicer_app/app/modules/home/domain/services/home_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,6 +66,7 @@ class HomeController extends Cubit<HomeState> {
       if (has) {
         try {
           await homeService.getAdvice().then((advicePromisse) => {
+                adviceIsSave(),
                 emit(
                   state.copyWith(
                       adviceMessage: advicePromisse.advice,
@@ -124,6 +123,38 @@ class HomeController extends Cubit<HomeState> {
     } catch (e) {
       emit(
         state.copyWith(saveAdviceStatus: SaveAdviceStatus.error),
+      );
+    }
+  }
+
+  void adviceIsSave() async {
+    bool containsAdvice;
+    await homeService.checkSavedAdvices().then(
+          (advicesSavedMap) => {
+            containsAdvice = advicesSavedMap.containsKey(
+              state.adviceId.toString(),
+            ),
+            emit(
+              state.copyWith(isLiked: containsAdvice),
+            )
+          },
+        );
+  }
+
+  void deleteAdvice() async {
+    emit(
+      state.copyWith(deleteAdviceStatus: DeleteAdviceStatus.loading),
+    );
+    try {
+      await homeService.deleteAdvice(
+        state.adviceId.toString(),
+      );
+      emit(
+        state.copyWith(deleteAdviceStatus: DeleteAdviceStatus.success),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(deleteAdviceStatus: DeleteAdviceStatus.error),
       );
     }
   }

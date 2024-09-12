@@ -12,4 +12,6 @@ abstract class HomeDatabaseDatasource {
   Future<void> saveAdviceDb(Map<String, dynamic> map);
 
   Future<Map<String, dynamic>> getAdvicesMap();
+
+  Future<void> deleteAdvice(String adviceId);
 }
