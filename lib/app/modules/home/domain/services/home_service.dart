@@ -15,4 +15,8 @@ abstract class HomeService {
   Future<bool> checkInternetConnection();
 
   Future<AboutData> getAboutDataInformation();
+
+  Future<void> saveAdvice(int id, String message);
+
+  Future<Map<String, dynamic>> checkSavedAdvices();
 }

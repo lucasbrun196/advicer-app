@@ -36,9 +36,4 @@ class AuthRepositoryImp extends AuthRepository {
   Future<void> sendEmailToResetPassword(String email) async {
     return await authRemoteDatasource.sendEmailToResetPassword(email);
   }
-
-  @override
-  Future<void> createEmptyListOnUserDb(String uid) async {
-    return await authFirestoreRemote.createEmptyAdvices(uid);
-  }
 }

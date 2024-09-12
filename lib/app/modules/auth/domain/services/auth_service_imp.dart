@@ -55,14 +55,4 @@ class AuthServiceImp extends AuthService {
   Future<bool> checkInternet() async {
     return await InternetConnectionChecker().hasConnection;
   }
-
-  @override
-  Future<void> createEmptyAdvicesListDb() async {
-    String userUid = await authRepository.isUserIsLogged();
-    if (userUid != '' || userUid.trim().isNotEmpty) {
-      return await authRepository.createEmptyListOnUserDb(userUid);
-    } else {
-      throw Exception();
-    }
-  }
 }

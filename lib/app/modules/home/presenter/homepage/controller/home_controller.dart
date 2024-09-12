@@ -1,3 +1,5 @@
+import 'package:advicer_app/app/modules/home/data/dto/advice_dto.dart';
+import 'package:advicer_app/app/modules/home/domain/entities/advice_data.dart';
 import 'package:advicer_app/app/modules/home/domain/services/home_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,6 +71,7 @@ class HomeController extends Cubit<HomeState> {
                 emit(
                   state.copyWith(
                       adviceMessage: advicePromisse.advice,
+                      adviceId: advicePromisse.id,
                       getAdviceStatus: GetAdviceStatus.success),
                 ),
               });
@@ -98,5 +101,30 @@ class HomeController extends Cubit<HomeState> {
 
   void changeLikedStatus(bool liked) {
     emit(state.copyWith(isLiked: liked));
+  }
+
+  void saveAdvice() async {
+    emit(
+      state.copyWith(saveAdviceStatus: SaveAdviceStatus.loading),
+    );
+    try {
+      final savedAdvices = await homeService.checkSavedAdvices();
+      if (savedAdvices.length >= 5) {
+        emit(
+          state.copyWith(
+              saveAdviceStatus: SaveAdviceStatus.error,
+              errorMessage: 'You have already 5 saved advices, delete one'),
+        );
+      } else {
+        await homeService.saveAdvice(state.adviceId!, state.adviceMessage!);
+        emit(
+          state.copyWith(saveAdviceStatus: SaveAdviceStatus.success),
+        );
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(saveAdviceStatus: SaveAdviceStatus.error),
+      );
+    }
   }
 }

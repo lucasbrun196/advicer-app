@@ -11,6 +11,4 @@ abstract class AuthRepository {
   Future<String> isUserIsLogged();
 
   Future<void> sendEmailToResetPassword(String email);
-
-  Future<void> createEmptyListOnUserDb(String uid);
 }

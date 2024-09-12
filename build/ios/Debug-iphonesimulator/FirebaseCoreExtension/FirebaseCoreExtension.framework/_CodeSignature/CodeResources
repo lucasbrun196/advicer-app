@@ -6,7 +6,7 @@
 	<dict>
 		<key>FirebaseCoreExtension_Privacy.bundle/Info.plist</key>
 		<data>
-		FkimE/vms1LvKQwUeDGq61W/WrI=
+		a3APHfl9ll5XjLbOyT8HfiOMuFk=
 		</data>
 		<key>FirebaseCoreExtension_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		YWqMJcepShnY9YF8IEXDMqPZq+M=
+		2ae7VWX8qoxGJcQMHYveGVScKc0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -71,11 +71,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FkimE/vms1LvKQwUeDGq61W/WrI=
+			a3APHfl9ll5XjLbOyT8HfiOMuFk=
 			</data>
 			<key>hash2</key>
 			<data>
-			MEXzhmOmBtrargIYP91pji0qmf0MJ3lgaSfNyx2F1k4=
+			VXKyVMvI0K8PeQiNIbeeTg+nS7wPs1yKTUvXwiaK6X4=
 			</data>
 		</dict>
 		<key>FirebaseCoreExtension_Privacy.bundle/PrivacyInfo.xcprivacy</key>

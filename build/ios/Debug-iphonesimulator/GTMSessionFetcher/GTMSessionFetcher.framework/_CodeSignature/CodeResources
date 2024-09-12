@@ -6,7 +6,7 @@
 	<dict>
 		<key>GTMSessionFetcher_Core_Privacy.bundle/Info.plist</key>
 		<data>
-		BmWn3WKyGFsNkIkTc1XqB78JcWI=
+		QbFISPQg+2YrgHWmWwRwgFERj8w=
 		</data>
 		<key>GTMSessionFetcher_Core_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		k71fr0hfvMn2G8ATfmHb82CkzdM=
+		AF7rkZe7E48kn1+FVALQRG0ZyfU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -47,11 +47,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BmWn3WKyGFsNkIkTc1XqB78JcWI=
+			QbFISPQg+2YrgHWmWwRwgFERj8w=
 			</data>
 			<key>hash2</key>
 			<data>
-			MF5Tp9I4GYHLvBtkyrLhvTR3ZYMlrvG/2RKQG0NVZ4M=
+			5EfhFlPMw51B5NaI5WAXLOs/Ea7qQZKjFrUM5ixdZeI=
 			</data>
 		</dict>
 		<key>GTMSessionFetcher_Core_Privacy.bundle/PrivacyInfo.xcprivacy</key>

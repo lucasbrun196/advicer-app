@@ -11,4 +11,8 @@ abstract class HomeRepository {
   Future<AdviceData> getAdvice();
 
   Future<AboutData> getAboutDataInformation();
+
+  Future<void> saveAdviceRepo(int id, String message);
+
+  Future<Map<String, dynamic>> getSavedAdvices();
 }

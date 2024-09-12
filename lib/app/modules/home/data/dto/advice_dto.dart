@@ -28,4 +28,11 @@ class AdviceDto implements AdviceData {
       advice: map["slip"]["advice"],
     );
   }
+
+  static Map<String, dynamic> toMap(AdviceData adviceData) {
+    return <String, dynamic>{
+      'id': adviceData.id,
+      'message': adviceData.advice,
+    };
+  }
 }

@@ -17,7 +17,6 @@ class CreateAccountController extends Cubit<CreateAccountState> {
     emit(state.copyWith(createAccountStatus: CreateAccountStatus.loading));
     try {
       final isAccountIsAvaliable = await authService.createAccount(newuser);
-      createEmptyAdvicesListDb();
       if (isAccountIsAvaliable) {
         emit(state.copyWith(createAccountStatus: CreateAccountStatus.success));
         backToLogin();
@@ -39,15 +38,5 @@ class CreateAccountController extends Cubit<CreateAccountState> {
     Modular.to.popUntil(
       ModalRoute.withName('/login'),
     );
-  }
-
-  void createEmptyAdvicesListDb() async {
-    try {
-      await authService.createEmptyAdvicesListDb();
-    } catch (e) {
-      emit(
-        state.copyWith(createAccountStatus: CreateAccountStatus.error),
-      );
-    }
   }
 }

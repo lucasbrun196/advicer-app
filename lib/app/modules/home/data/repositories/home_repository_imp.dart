@@ -61,4 +61,24 @@ class HomeRepositoryImp extends HomeRepository {
       throw Exception();
     }
   }
+
+  @override
+  Future<void> saveAdviceRepo(int id, String message) async {
+    try {
+      final AdviceData adviceData = AdviceData(id: id, advice: message);
+      final Map<String, dynamic> adviceMap = AdviceDto.toMap(adviceData);
+      await homeDatabaseDatasource.saveAdviceDb(adviceMap);
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>> getSavedAdvices() async {
+    try {
+      return await homeDatabaseDatasource.getAdvicesMap();
+    } catch (e) {
+      throw Exception();
+    }
+  }
 }
