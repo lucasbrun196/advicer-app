@@ -21,4 +21,6 @@ abstract class HomeService {
   Future<Map<String, dynamic>> checkSavedAdvices();
 
   Future<void> deleteAdvice(String adviceId);
+
+  Future<List<AdviceData>> getSavedAdvices();
 }

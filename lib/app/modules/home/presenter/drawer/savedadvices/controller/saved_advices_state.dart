@@ -4,19 +4,31 @@ enum SavedAdvicesStatus { inital, loading, success, error }
 
 class SavedAdvicesState extends Equatable {
   final SavedAdvicesStatus savedAdvicesStatus;
+  final String? errorMessage;
+  final List<AdviceData> advicesList;
 
-  const SavedAdvicesState({
-    required this.savedAdvicesStatus,
-  });
+  const SavedAdvicesState(
+      {required this.savedAdvicesStatus,
+      this.errorMessage,
+      required this.advicesList});
 
   @override
-  List<Object?> get props => [savedAdvicesStatus];
+  List<Object?> get props => [savedAdvicesStatus, errorMessage, advicesList];
 
-  const SavedAdvicesState.inital()
-      : this(savedAdvicesStatus: SavedAdvicesStatus.inital);
+  SavedAdvicesState.inital()
+      : this(
+            savedAdvicesStatus: SavedAdvicesStatus.inital,
+            errorMessage: null,
+            advicesList: []);
 
-  SavedAdvicesState copyWith({SavedAdvicesStatus? savedAdvicesStatus}) {
+  SavedAdvicesState copyWith(
+      {SavedAdvicesStatus? savedAdvicesStatus,
+      String? errorMessage,
+      List<AdviceData>? advicesList}) {
     return SavedAdvicesState(
-        savedAdvicesStatus: savedAdvicesStatus ?? this.savedAdvicesStatus);
+      savedAdvicesStatus: savedAdvicesStatus ?? this.savedAdvicesStatus,
+      errorMessage: errorMessage ?? this.errorMessage,
+      advicesList: advicesList ?? this.advicesList,
+    );
   }
 }

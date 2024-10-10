@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:advicer_app/app/modules/home/data/dto/advice_dto.dart';
 import 'package:advicer_app/app/modules/home/domain/entities/user_data.dart';
 import 'package:advicer_app/app/modules/home/domain/repositories/home_repository.dart';
 import 'package:advicer_app/app/modules/home/domain/services/home_service.dart';
@@ -55,5 +58,18 @@ class HomeServiceImp implements HomeService {
   @override
   Future<void> deleteAdvice(String adviceId) async {
     return await homeRepository.deleteAdvice(adviceId);
+  }
+
+  @override
+  Future<List<AdviceData>> getSavedAdvices() async {
+    List<AdviceData> savedAdviceList = [];
+    Map<String, dynamic> advicesMap = await homeRepository.getSavedAdvices();
+    advicesMap.forEach((key, value) {
+      AdviceData adviceData = AdviceData(id: int.parse(key), advice: value);
+      savedAdviceList.add(adviceData);
+      print(value);
+    });
+
+    return savedAdviceList;
   }
 }
