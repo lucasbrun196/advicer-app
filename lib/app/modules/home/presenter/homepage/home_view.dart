@@ -117,6 +117,31 @@ class _HomeViewState extends State<HomeView> {
                               color: Color.fromRGBO(108, 91, 164, 0.354),
                               thickness: 0.5,
                             ),
+                            InkWell(
+                              onTap: () async {
+                                widget.controller.navigateToSavedAdvicesPage();
+                              },
+                              child: const ListTile(
+                                title: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'You advices',
+                                      style:
+                                          TextStyle(fontFamily: 'Montserrat'),
+                                    ),
+                                    Icon(
+                                      Icons.save_alt,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const Divider(
+                              color: Color.fromRGBO(108, 91, 164, 0.354),
+                              thickness: 0.5,
+                            ),
                           ],
                         ),
                       ),

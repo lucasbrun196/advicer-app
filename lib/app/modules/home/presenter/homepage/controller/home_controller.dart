@@ -98,6 +98,10 @@ class HomeController extends Cubit<HomeState> {
     Modular.to.pushNamed('/home/about');
   }
 
+  void navigateToSavedAdvicesPage() {
+    Modular.to.pushNamed('/home/savedadvices');
+  }
+
   void changeLikedStatus(bool liked) {
     emit(state.copyWith(isLiked: liked));
   }
