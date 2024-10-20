@@ -67,7 +67,6 @@ class HomeServiceImp implements HomeService {
     advicesMap.forEach((key, value) {
       AdviceData adviceData = AdviceData(id: int.parse(key), advice: value);
       savedAdviceList.add(adviceData);
-      print(value);
     });
 
     return savedAdviceList;
