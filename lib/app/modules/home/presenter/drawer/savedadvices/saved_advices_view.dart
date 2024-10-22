@@ -1,6 +1,8 @@
 import 'package:advicer_app/app/modules/home/presenter/drawer/savedadvices/controller/saved_advices_controller.dart';
+import 'package:asuka/asuka.dart';
 import 'package:asuka/snackbars/asuka_snack_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SavedAdvicesView extends StatefulWidget {
@@ -40,8 +42,8 @@ class _SavedAdvicesViewState extends State<SavedAdvicesView> {
             BlocBuilder<SavedAdvicesController, SavedAdvicesState>(
               bloc: widget.controller,
               builder: (context, state) {
-                if (widget.controller.state.markedCheckBoxes!.contains(true) &&
-                    state.savedAdvicesStatus == SavedAdvicesStatus.success) {
+                if (state.savedAdvicesStatus == SavedAdvicesStatus.success &&
+                    widget.controller.state.markedCheckBoxes!.contains(true)) {
                   return Padding(
                     padding: const EdgeInsets.only(right: 25),
                     child: IconButton(

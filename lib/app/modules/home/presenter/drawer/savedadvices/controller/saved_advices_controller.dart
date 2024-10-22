@@ -23,7 +23,9 @@ class SavedAdvicesController extends Cubit<SavedAdvicesState> {
       );
     } catch (e) {
       emit(
-        state.copyWith(savedAdvicesStatus: SavedAdvicesStatus.error),
+        state.copyWith(
+            savedAdvicesStatus: SavedAdvicesStatus.error,
+            errorMessage: "You don't have any saved advice"),
       );
     }
   }
