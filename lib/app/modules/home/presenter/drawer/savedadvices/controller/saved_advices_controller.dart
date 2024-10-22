@@ -13,10 +13,13 @@ class SavedAdvicesController extends Cubit<SavedAdvicesState> {
     emit(state.copyWith(savedAdvicesStatus: SavedAdvicesStatus.loading));
     try {
       List<AdviceData> advicesList = await homeService.getSavedAdvices();
+      List<bool> initialCheckBoxes = List.filled(advicesList.length, false);
       emit(
         state.copyWith(
-            advicesList: advicesList,
-            savedAdvicesStatus: SavedAdvicesStatus.success),
+          advicesList: advicesList,
+          savedAdvicesStatus: SavedAdvicesStatus.success,
+          markedCheckBoxes: initialCheckBoxes,
+        ),
       );
     } catch (e) {
       emit(

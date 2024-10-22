@@ -35,24 +35,88 @@ class _SavedAdvicesViewState extends State<SavedAdvicesView> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Your advices"),
+          centerTitle: true,
+          actions: [
+            BlocBuilder<SavedAdvicesController, SavedAdvicesState>(
+              bloc: widget.controller,
+              builder: (context, state) {
+                if (widget.controller.state.markedCheckBoxes!.contains(true) &&
+                    state.savedAdvicesStatus == SavedAdvicesStatus.success) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 25),
+                    child: IconButton(
+                      onPressed: () {
+                        //function to delete
+                      },
+                      icon: const Icon(
+                        size: 28,
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    ),
+                  );
+                } else {
+                  return Container();
+                }
+              },
+            ),
+          ],
+          title: const Text(
+            "Your advices",
+            style: TextStyle(fontFamily: 'Montserrat'),
+          ),
         ),
         body: BlocBuilder<SavedAdvicesController, SavedAdvicesState>(
           bloc: widget.controller,
           builder: (context, state) {
             if (widget.controller.state.advicesList.isNotEmpty &&
                 state.savedAdvicesStatus == SavedAdvicesStatus.success) {
-              return ListView.separated(
-                itemBuilder: (BuildContext context, int index) =>
-                    const Divider(),
-                itemCount: widget.controller.state.advicesList.length,
-                separatorBuilder: (BuildContext context, int index) {
-                  return Card(
-                    color: Colors.black12,
-                    child:
-                        Text(widget.controller.state.advicesList[index].advice),
-                  );
-                },
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
+                child: ListView.separated(
+                  itemBuilder: (BuildContext context, int index) =>
+                      const Divider(),
+                  itemCount: widget.controller.state.advicesList.length + 1,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      height: 70,
+                      child: BlocBuilder<SavedAdvicesController,
+                          SavedAdvicesState>(
+                        bloc: widget.controller,
+                        builder: (context, state) {
+                          return Row(
+                            children: [
+                              Checkbox(
+                                value: widget
+                                    .controller.state.markedCheckBoxes![index],
+                                onChanged: (value) {
+                                  setState(() {
+                                    widget.controller.state
+                                        .markedCheckBoxes![index] = value!;
+                                  });
+                                },
+                              ),
+                              Flexible(
+                                child: Text(
+                                  style: const TextStyle(
+                                      fontSize: 15, fontFamily: 'Montserrat'),
+                                  widget.controller.state.advicesList[index]
+                                      .advice,
+                                  overflow: TextOverflow.clip,
+                                ),
+                              )
+                            ],
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+              );
+            } else if (state.savedAdvicesStatus == SavedAdvicesStatus.loading) {
+              return const Center(
+                child: CircularProgressIndicator(),
               );
             } else {
               return Container();

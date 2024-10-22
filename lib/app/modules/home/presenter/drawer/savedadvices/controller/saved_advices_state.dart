@@ -6,29 +6,40 @@ class SavedAdvicesState extends Equatable {
   final SavedAdvicesStatus savedAdvicesStatus;
   final String? errorMessage;
   final List<AdviceData> advicesList;
+  final List<bool>? markedCheckBoxes;
 
-  const SavedAdvicesState(
-      {required this.savedAdvicesStatus,
-      this.errorMessage,
-      required this.advicesList});
+  const SavedAdvicesState({
+    required this.savedAdvicesStatus,
+    this.errorMessage,
+    required this.advicesList,
+    this.markedCheckBoxes,
+  });
 
   @override
-  List<Object?> get props => [savedAdvicesStatus, errorMessage, advicesList];
+  List<Object?> get props => [
+        savedAdvicesStatus,
+        errorMessage,
+        advicesList,
+        markedCheckBoxes,
+      ];
 
   SavedAdvicesState.inital()
       : this(
-            savedAdvicesStatus: SavedAdvicesStatus.inital,
-            errorMessage: null,
-            advicesList: []);
+          savedAdvicesStatus: SavedAdvicesStatus.inital,
+          errorMessage: null,
+          advicesList: [],
+        );
 
-  SavedAdvicesState copyWith(
-      {SavedAdvicesStatus? savedAdvicesStatus,
-      String? errorMessage,
-      List<AdviceData>? advicesList}) {
+  SavedAdvicesState copyWith({
+    SavedAdvicesStatus? savedAdvicesStatus,
+    String? errorMessage,
+    List<AdviceData>? advicesList,
+    List<bool>? markedCheckBoxes,
+  }) {
     return SavedAdvicesState(
-      savedAdvicesStatus: savedAdvicesStatus ?? this.savedAdvicesStatus,
-      errorMessage: errorMessage ?? this.errorMessage,
-      advicesList: advicesList ?? this.advicesList,
-    );
+        savedAdvicesStatus: savedAdvicesStatus ?? this.savedAdvicesStatus,
+        errorMessage: errorMessage ?? this.errorMessage,
+        advicesList: advicesList ?? this.advicesList,
+        markedCheckBoxes: markedCheckBoxes ?? this.markedCheckBoxes);
   }
 }
