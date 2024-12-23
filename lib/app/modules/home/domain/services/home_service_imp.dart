@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:advicer_app/app/modules/home/data/dto/advice_dto.dart';
 import 'package:advicer_app/app/modules/home/domain/entities/user_data.dart';
 import 'package:advicer_app/app/modules/home/domain/repositories/home_repository.dart';
 import 'package:advicer_app/app/modules/home/domain/services/home_service.dart';
@@ -37,7 +34,8 @@ class HomeServiceImp implements HomeService {
 
   @override
   Future<bool> checkInternetConnection() async {
-    return await InternetConnectionChecker().hasConnection;
+    final internetConnection = InternetConnectionChecker.createInstance().hasConnection;
+    return internetConnection;
   }
 
   @override

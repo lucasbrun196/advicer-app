@@ -6,13 +6,13 @@
 	<dict>
 		<key>Info.plist</key>
 		<data>
-		Oqb3h8dXJcKb9w/U8h8KxdcGzsY=
+		KO44LzfzLELiKUo5twaD53hvu+U=
 		</data>
 		<key>connectivity_plus_privacy.bundle/Info.plist</key>
 		<data>
-		HPzggcwwkFmPaBYzvYONEnm+m2Y=
+		qPx2i0RVHMH0HKpj4wD/Gdx6H/Y=
 		</data>
-		<key>connectivity_plus_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<key>connectivity_plus_privacy.bundle/PrivacyInfo-ios.xcprivacy</key>
 		<data>
 		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
 		</data>
@@ -23,10 +23,10 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pcfKHL516m2evsJnL9Dmt5gN3ICmVmoTtt3PeGELxHM=
+			66/FRIGaX/peoHTE4Lyz5mgc6oxfyxBVc1m2WDXxNiI=
 			</data>
 		</dict>
-		<key>connectivity_plus_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<key>connectivity_plus_privacy.bundle/PrivacyInfo-ios.xcprivacy</key>
 		<dict>
 			<key>hash2</key>
 			<data>

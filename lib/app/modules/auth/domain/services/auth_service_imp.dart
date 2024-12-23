@@ -53,6 +53,7 @@ class AuthServiceImp extends AuthService {
 
   @override
   Future<bool> checkInternet() async {
-    return await InternetConnectionChecker().hasConnection;
+    final internetConnection = InternetConnectionChecker.createInstance().hasConnection;
+    return internetConnection;
   }
 }
