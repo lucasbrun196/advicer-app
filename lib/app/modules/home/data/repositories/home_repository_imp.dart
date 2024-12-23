@@ -75,11 +75,7 @@ class HomeRepositoryImp extends HomeRepository {
 
   @override
   Future<Map<String, dynamic>> getSavedAdvices() async {
-    try {
-      return await homeDatabaseDatasource.getAdvicesMap();
-    } catch (e) {
-      throw Exception();
-    }
+    return await homeDatabaseDatasource.getAdvicesMap();
   }
 
   @override

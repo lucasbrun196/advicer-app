@@ -29,4 +29,26 @@ class SavedAdvicesController extends Cubit<SavedAdvicesState> {
       );
     }
   }
+
+  void deleteAdvices() {
+    emit(state.copyWith(savedAdvicesStatus: SavedAdvicesStatus.loading));
+    try {
+      for (int i = 0; i < state.markedCheckBoxes.length; i++) {
+        if (state.markedCheckBoxes[i]) {
+          homeService.deleteAdvice(state.advicesList[i].id.toString());
+          state.advicesList.removeAt(i);
+        }
+      }
+      List<bool> initialCheckBoxes =
+          List.filled(state.advicesList.length, false);
+
+      emit(state.copyWith(
+          savedAdvicesStatus: SavedAdvicesStatus.success,
+          markedCheckBoxes: initialCheckBoxes));
+    } catch (e) {
+      emit(state.copyWith(
+          savedAdvicesStatus: SavedAdvicesStatus.error,
+          errorMessage: 'Can`t delete'));
+    }
+  }
 }

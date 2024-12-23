@@ -70,30 +70,32 @@ class HomeFirestoreDatasourceImp implements HomeDatabaseDatasource {
 
   @override
   Future<Map<String, dynamic>> getAdvicesMap() async {
-    try {
-      final String userUid = await getCurrentUserUid();
-      final docSnapshot =
-          await firebaseFirestore.collection('favAdvices').doc(userUid).get();
-      final Map<String, dynamic> data =
-          docSnapshot.data() as Map<String, dynamic>;
-      return data;
-    } catch (e) {
-      throw Exception();
+    Map<String, dynamic> data = {};
+    final String userUid = await getCurrentUserUid();
+    final docSnapshot =
+        await firebaseFirestore.collection('favAdvices').doc(userUid).get();
+    if (docSnapshot.data() != null) {
+      data = docSnapshot.data() as Map<String, dynamic>;
     }
+
+    return data;
   }
 
   @override
   Future<void> saveAdviceDb(Map<String, dynamic> map) async {
     try {
-      await getCurrentUserUid().then(
-        (uid) => {
-          firebaseFirestore.collection('favAdvices').doc(uid).update(
-            {
-              map['id'].toString(): map['message'],
-            },
-          )
-        },
-      );
+      final uid = await getCurrentUserUid();
+      final doc = firebaseFirestore.collection('favAdvices').doc(uid);
+      final docSnapshot = await doc.get();
+      if (docSnapshot.exists) {
+        doc.update({
+          map['id'].toString(): map['message'],
+        });
+      } else {
+        doc.set({
+          map['id'].toString(): map['message'],
+        });
+      }
     } catch (e) {
       throw Exception();
     }

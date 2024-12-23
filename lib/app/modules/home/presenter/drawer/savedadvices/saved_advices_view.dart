@@ -2,7 +2,6 @@ import 'package:advicer_app/app/modules/home/presenter/drawer/savedadvices/contr
 import 'package:asuka/asuka.dart';
 import 'package:asuka/snackbars/asuka_snack_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SavedAdvicesView extends StatefulWidget {
@@ -41,14 +40,16 @@ class _SavedAdvicesViewState extends State<SavedAdvicesView> {
           actions: [
             BlocBuilder<SavedAdvicesController, SavedAdvicesState>(
               bloc: widget.controller,
+              buildWhen: (previous, current) =>
+                  previous.savedAdvicesStatus != current.savedAdvicesStatus,
               builder: (context, state) {
                 if (state.savedAdvicesStatus == SavedAdvicesStatus.success &&
-                    widget.controller.state.markedCheckBoxes!.contains(true)) {
+                    widget.controller.state.markedCheckBoxes.contains(true)) {
                   return Padding(
                     padding: const EdgeInsets.only(right: 25),
                     child: IconButton(
                       onPressed: () {
-                        //function to delete
+                        widget.controller.deleteAdvices();
                       },
                       icon: const Icon(
                         size: 28,
@@ -70,6 +71,8 @@ class _SavedAdvicesViewState extends State<SavedAdvicesView> {
         ),
         body: BlocBuilder<SavedAdvicesController, SavedAdvicesState>(
           bloc: widget.controller,
+          buildWhen: (previous, current) =>
+              previous.savedAdvicesStatus != current.savedAdvicesStatus,
           builder: (context, state) {
             if (widget.controller.state.advicesList.isNotEmpty &&
                 state.savedAdvicesStatus == SavedAdvicesStatus.success) {
@@ -91,11 +94,11 @@ class _SavedAdvicesViewState extends State<SavedAdvicesView> {
                             children: [
                               Checkbox(
                                 value: widget
-                                    .controller.state.markedCheckBoxes![index],
+                                    .controller.state.markedCheckBoxes[index],
                                 onChanged: (value) {
                                   setState(() {
                                     widget.controller.state
-                                        .markedCheckBoxes![index] = value!;
+                                        .markedCheckBoxes[index] = value!;
                                   });
                                 },
                               ),

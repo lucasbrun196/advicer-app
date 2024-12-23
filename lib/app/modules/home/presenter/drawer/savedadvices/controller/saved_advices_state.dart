@@ -6,13 +6,13 @@ class SavedAdvicesState extends Equatable {
   final SavedAdvicesStatus savedAdvicesStatus;
   final String? errorMessage;
   final List<AdviceData> advicesList;
-  final List<bool>? markedCheckBoxes;
+  final List<bool> markedCheckBoxes;
 
   const SavedAdvicesState({
     required this.savedAdvicesStatus,
     this.errorMessage,
     required this.advicesList,
-    this.markedCheckBoxes,
+    required this.markedCheckBoxes,
   });
 
   @override
@@ -25,10 +25,10 @@ class SavedAdvicesState extends Equatable {
 
   SavedAdvicesState.inital()
       : this(
-          savedAdvicesStatus: SavedAdvicesStatus.inital,
-          errorMessage: null,
-          advicesList: [],
-        );
+            savedAdvicesStatus: SavedAdvicesStatus.inital,
+            errorMessage: null,
+            advicesList: [],
+            markedCheckBoxes: []);
 
   SavedAdvicesState copyWith({
     SavedAdvicesStatus? savedAdvicesStatus,

@@ -34,7 +34,8 @@ class HomeServiceImp implements HomeService {
 
   @override
   Future<bool> checkInternetConnection() async {
-    final internetConnection = InternetConnectionChecker.createInstance().hasConnection;
+    final internetConnection =
+        InternetConnectionChecker.createInstance().hasConnection;
     return internetConnection;
   }
 
@@ -62,10 +63,12 @@ class HomeServiceImp implements HomeService {
   Future<List<AdviceData>> getSavedAdvices() async {
     List<AdviceData> savedAdviceList = [];
     Map<String, dynamic> advicesMap = await homeRepository.getSavedAdvices();
-    advicesMap.forEach((key, value) {
-      AdviceData adviceData = AdviceData(id: int.parse(key), advice: value);
-      savedAdviceList.add(adviceData);
-    });
+    if (advicesMap.isNotEmpty) {
+      advicesMap.forEach((key, value) {
+        AdviceData adviceData = AdviceData(id: int.parse(key), advice: value);
+        savedAdviceList.add(adviceData);
+      });
+    }
 
     return savedAdviceList;
   }
