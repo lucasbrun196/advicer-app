@@ -6,7 +6,7 @@
 	<dict>
 		<key>GTMSessionFetcher_Core_Privacy.bundle/Info.plist</key>
 		<data>
-		RISKNkdl26y4uMv/rWP+cYmVvV8=
+		1t7k99YNOLfcH0O/yEp2rqmnqWw=
 		</data>
 		<key>GTMSessionFetcher_Core_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		0PTm4UueD8BkWeYSe8EF1NBE1+M=
+		a0Ojs2cP6YuyYG0926qHtq3z4fI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -45,21 +45,13 @@
 	<dict>
 		<key>GTMSessionFetcher_Core_Privacy.bundle/Info.plist</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			RISKNkdl26y4uMv/rWP+cYmVvV8=
-			</data>
 			<key>hash2</key>
 			<data>
-			+L71YWuTPNgnzICNvxUzGQP7dTWn8aV+J+/FD1ljkhA=
+			qvS0206RNnKPE7ZrLvlo06W3kVIHiIdQaF9246VsfQ4=
 			</data>
 		</dict>
 		<key>GTMSessionFetcher_Core_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			GqeAMkwbcNQeG0K4qQhQh2vHhHo=
-			</data>
 			<key>hash2</key>
 			<data>
 			PkqTy+hqzvfdfgY6KMhJmS9Vbn9SytxfN8HosOG1RoY=
@@ -67,10 +59,6 @@
 		</dict>
 		<key>Headers/GTMSessionFetcher-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			uk5tfn4+qFjgRMutCcPDErlSaiE=
-			</data>
 			<key>hash2</key>
 			<data>
 			3rne+xIEztt63voNklSVEM3UXM+Jkgc6ENNW5IKGMh8=
@@ -78,10 +66,6 @@
 		</dict>
 		<key>Headers/GTMSessionFetcher.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			zquCZA+JT10lq1T+mwUNrdUroOU=
-			</data>
 			<key>hash2</key>
 			<data>
 			BCumu4zZk/3HmGxwHUYsY6zwQ56H6EjlRqOUgl1aVBk=
@@ -89,10 +73,6 @@
 		</dict>
 		<key>Headers/GTMSessionFetcherLogging.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			OarAK/xhbLrf3l1Rs7fmZYjpY+s=
-			</data>
 			<key>hash2</key>
 			<data>
 			kLGAoYz9D1T929Ogar/2lyKQDrsGraqasNrbJRZXBLw=
@@ -100,10 +80,6 @@
 		</dict>
 		<key>Headers/GTMSessionFetcherService.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ClMW+EGewONyIVj90dqQryYgU8c=
-			</data>
 			<key>hash2</key>
 			<data>
 			azIV5/Xnt07mwWket4bHfpWSd1wneL3H7NevcdUrDaQ=
@@ -111,10 +87,6 @@
 		</dict>
 		<key>Headers/GTMSessionUploadFetcher.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			TE76DD4mdfx7YpyWkF/mndCsbHc=
-			</data>
 			<key>hash2</key>
 			<data>
 			m16aSuNPO4Nhe+6CY0J+wAtOfcsdlDJfkHvD4BqLg9s=
@@ -122,10 +94,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Zd+B+N1kD6ufOJwjEQ1h4yl/05s=
-			</data>
 			<key>hash2</key>
 			<data>
 			s/7Ay5SAF/AZJnsEfDo0km7Zw2aVRXsBLuyUjeZo7/Y=

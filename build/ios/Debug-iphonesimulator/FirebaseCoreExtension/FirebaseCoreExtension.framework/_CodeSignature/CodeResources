@@ -6,7 +6,7 @@
 	<dict>
 		<key>FirebaseCoreExtension_Privacy.bundle/Info.plist</key>
 		<data>
-		E3pPxlVCZYpuCkrpPjt1UGNPIHc=
+		heW5pfVWkWhz9dB1R0yVO3H15nk=
 		</data>
 		<key>FirebaseCoreExtension_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		hJUWuLNEsxQTgN3cl95EHfWywCQ=
+		uOfAWuEd56K+45Xv/iL0aZBwO6U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -69,21 +69,13 @@
 	<dict>
 		<key>FirebaseCoreExtension_Privacy.bundle/Info.plist</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			E3pPxlVCZYpuCkrpPjt1UGNPIHc=
-			</data>
 			<key>hash2</key>
 			<data>
-			Ut/v1gWIT8XoDTXEYXdHElSzhXlRXn5Bu4MWb/wROp8=
+			v/tw3Oik84zu/wM6poT2TYocqCAfS1wGFVP9+9Euupw=
 			</data>
 		</dict>
 		<key>FirebaseCoreExtension_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			6iBlSEWzrD6zouHx4NqeDhjKSGQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			E3fszt/4+DIPeAQOnJ0+F+zA6laVlLVq8O8XvkQZfHo=
@@ -91,10 +83,6 @@
 		</dict>
 		<key>Headers/FIRAppInternal.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			KBu6H9y60Wi09ZN4fPmqhynn+ks=
-			</data>
 			<key>hash2</key>
 			<data>
 			0hcB4gOCXxHP0Lj0QWg3xFpQHXtZKpC/GFAXN28CSGI=
@@ -102,10 +90,6 @@
 		</dict>
 		<key>Headers/FIRComponent.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			KqhoQgVHD4UDiqftilXADSDRmho=
-			</data>
 			<key>hash2</key>
 			<data>
 			DekFW0zXnwNzOidaOOF25tvZb/rOQgZDB4WzBrTXw5o=
@@ -113,10 +97,6 @@
 		</dict>
 		<key>Headers/FIRComponentContainer.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			wYGCUDjNEL1RzUONIejbNug2+qo=
-			</data>
 			<key>hash2</key>
 			<data>
 			DF/s52E8jfoiMm9aHaP6xYh/oMkBzhZDcpa28mEVpEs=
@@ -124,10 +104,6 @@
 		</dict>
 		<key>Headers/FIRComponentType.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			LGXGsMROAgiS7VUzjy7gfFCelcw=
-			</data>
 			<key>hash2</key>
 			<data>
 			vc5fR3OptAq45a+caZ4vC+cIb/QipIM3rSso8zI/sBc=
@@ -135,10 +111,6 @@
 		</dict>
 		<key>Headers/FIRDependency.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			nnXszCvGZLnmaCd01uXan39bIXk=
-			</data>
 			<key>hash2</key>
 			<data>
 			Io07+VBF7tbSCpuHW5ADts837+FvEOw6lQN8+ShA6RQ=
@@ -146,10 +118,6 @@
 		</dict>
 		<key>Headers/FIRHeartbeatLogger.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5V/QnmUTEtVLgtapvr95/9ugX3Q=
-			</data>
 			<key>hash2</key>
 			<data>
 			MZ/3gAT5MHe+apOUl0r0dmFuL5O9wU20j4TxFmDfxCU=
@@ -157,10 +125,6 @@
 		</dict>
 		<key>Headers/FIRLibrary.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Bn0RjQ5i9wRHEOzwA7lZkmyPdMo=
-			</data>
 			<key>hash2</key>
 			<data>
 			likdFAXV6bJVIbGOUUZ6n2zLfNw5hMju/2VnzeKabEc=
@@ -168,10 +132,6 @@
 		</dict>
 		<key>Headers/FIRLogger.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ACqXR/e/LmxOTnOrL0Uawu2rQjk=
-			</data>
 			<key>hash2</key>
 			<data>
 			p2xD8WXcJn71bveqA3iE6R+8Y7Hs3a5AY54jeG3Hruo=
@@ -179,10 +139,6 @@
 		</dict>
 		<key>Headers/FIROptionsInternal.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			WmjewY69W7CuRXv+sHpVIspgFTU=
-			</data>
 			<key>hash2</key>
 			<data>
 			2mffi7ThWjtvfClESdXpPNHMdktSf+2Vl1co2vvQQIw=
@@ -190,10 +146,6 @@
 		</dict>
 		<key>Headers/FirebaseCoreExtension-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hkdHsCSIleAlfQpm6AphEX6Vvog=
-			</data>
 			<key>hash2</key>
 			<data>
 			karg7ADgbSHfehKuNgFgXxLzZFI8sNkDVEUB6NraFhQ=
@@ -201,10 +153,6 @@
 		</dict>
 		<key>Headers/FirebaseCoreInternal.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			TizAgUTXAgwAFWuQYnhhH3XiVow=
-			</data>
 			<key>hash2</key>
 			<data>
 			0OvX5nPhYAzTR3qbnhyN41UTb4Gf5QTFZhMAQhF1bkk=
@@ -212,10 +160,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			zhQGHXVcqb9psht1Ake4j97II0Q=
-			</data>
 			<key>hash2</key>
 			<data>
 			NY1Qc4uT+e+pD9Apo/P+O/zAHpkXskzkt2pWIvGplFU=
